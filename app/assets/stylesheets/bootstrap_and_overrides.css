@@ -1,0 +1,21 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+
+.tweak-character{
+  display: inline-block;
+}
+
+.tweak-character input{
+  width: 30px;
+  text-align:center;
+  font-size: 30px;
+}
+
+.list-group-striped:nth-child(odd){
+  background-color: #f5f5f5;
+}

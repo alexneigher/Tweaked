@@ -1,0 +1,4 @@
+= form_tag title_tweaks_path(@title), method: :post do
+  - @title.name.chars.each do |char|
+    .tweak-character.well
+      = text_field_tag "characters[]", char

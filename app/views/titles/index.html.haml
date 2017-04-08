@@ -1,0 +1,19 @@
+%ul.list-group
+  - @titles.each do |title|
+    %li.list-group-item
+      =link_to title_path(title) do
+        = title.name
+        .pull-right
+          Tweaqs: 
+          = title.tweaks.length
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        Add your Own
+      .panel-body
+        = form_for :title, url: titles_path, method: :post do |f|
+          .form-group
+            = f.text_field :name, class: 'form-control', placeholder: 'Game of Thrones'
+          
+          = f.submit 'Save Title', class: 'btn btn-success btn-sm'

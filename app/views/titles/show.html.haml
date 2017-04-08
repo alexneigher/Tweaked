@@ -1,0 +1,16 @@
+%h4
+  =@title.name
+
+.panel.panel-default
+  .panel-body
+    = render partial: 'tweak_builder'
+
+.row
+  .col-md-12
+    .panel.panel-success
+      .panel-heading
+        Tweaks
+      .panel-body
+        %ul.list-group
+          - @title.tweaks.each do |tweak|
+            = render partial: 'tweak', locals: {tweak: tweak}
