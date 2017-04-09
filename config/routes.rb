@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :titles do
     resources :tweaks do
-      resources :descriptions
+      resources :descriptions do
+        put :upvote
+        put :downvote
+      end
     end
   end
 end

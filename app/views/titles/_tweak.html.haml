@@ -5,11 +5,12 @@
     - tweak.descriptions.each do |description|
       %li.list-group-item
         = description.upvotes
-        %i.fa.fa-thumbs-up
+        = link_to title_tweak_description_upvote_path(@title, tweak, description), method: :put do
+          %i.fa.fa-thumbs-up
         |
-        
         = description.downvotes
-        %i.fa.fa-thumbs-down
+        = link_to title_tweak_description_downvote_path(@title, tweak, description), method: :put do
+          %i.fa.fa-thumbs-down
         = description.text
     %li.list-group-item
       = form_for :description, url: title_tweak_descriptions_path(@title, tweak), method: :post do |f|

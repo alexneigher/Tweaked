@@ -9,9 +9,13 @@ class TitlesController < ApplicationController
 
   def create
     @title = Title.create(title_params)
+
+    unless @title.valid?
+      flash[:error] = @title.errors.full_messages
+    end
+
     redirect_to root_path
   end
-
 
   private
     def title_params
