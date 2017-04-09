@@ -1,21 +1,26 @@
-%li.list-group-item.list-group-striped
-  %h4
-    = tweak.name
-  %ul.list-group
-    - tweak.descriptions.each do |description|
-      %li.list-group-item
-        = description.upvotes
-        = link_to title_tweak_description_upvote_path(@title, tweak, description), method: :put do
-          %i.fa.fa-thumbs-up
-        |
-        = description.downvotes
-        = link_to title_tweak_description_downvote_path(@title, tweak, description), method: :put do
-          %i.fa.fa-thumbs-down
-        = description.text
+%h1
+  "#{tweak.name}"
+%ul.list-group
+  - tweak.descriptions.order('upvotes DESC').each do |description|
     %li.list-group-item
-      = form_for :description, url: title_tweak_descriptions_path(@title, tweak), method: :post do |f|
-        .row
-          .col-md-4
-            = f.text_field :text, placeholder: "Describe '#{tweak.name}'", class: 'form-control'
-          .col-md-4
-            = f.submit 'Save', class: 'btn btn-sm btn-primary'
+      .btn-group.btn-group
+        = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
+          %button.btn.btn-success.btn-sm{:type => "button"} 
+            = description.upvotes
+            %i.fa.fa-thumbs-up
+
+        =link_to title_tweak_description_downvote_path(@title, tweak, description), remote: true, method: :put do
+          %button.btn.btn-danger.btn-sm{:type => "button"}
+            = description.downvotes
+            %i.fa.fa-thumbs-down
+
+      %h4
+        = description.text
+
+  %li.list-group-item
+    = form_for :description, url: title_tweak_descriptions_path(@title, tweak), method: :post do |f|
+      .row
+        .col-md-4
+          = f.text_field :text, value: nil, placeholder: "Describe '#{tweak.name}'", class: 'form-control'
+        .col-md-4
+          = f.submit 'Save', class: 'btn btn-sm btn-primary'

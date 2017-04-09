@@ -1,5 +1,5 @@
 class DescriptionsController < ApplicationController
-  before_filter :find_title
+  before_action :find_title
 
   def create
     @tweak = @title.tweaks.find(params[:tweak_id])
@@ -15,7 +15,7 @@ class DescriptionsController < ApplicationController
     
     @description.upvote!
 
-    redirect_to title_path(@title)
+    render :vote
   end
 
   def downvote
@@ -24,14 +24,14 @@ class DescriptionsController < ApplicationController
     
     @description.downvote!
 
-    redirect_to title_path(@title)
+    render :vote
   end
 
 
   private
 
     def find_title
-      @title = Title.find(params[:title_id])
+      @title = Title.includes(tweaks: :descriptions).find(params[:title_id])
 
     end
 
