@@ -1,0 +1,30 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Tweaq'd"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+
+  %body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to root_path, class: 'navbar-brand' do
+          = image_tag 'tweaqd_logo1.3.png', style: 'max-width:100px;'
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            - Category.all.each do |category|
+              %li
+                = link_to category.name, category_path(category)
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          = yield

@@ -1,7 +1,4 @@
 class TitlesController < ApplicationController
-  def index
-    @titles = Title.includes(:tweaks).all
-  end
 
   def show
     @title = Title.includes(tweaks: :descriptions).find(params[:id])
@@ -14,11 +11,11 @@ class TitlesController < ApplicationController
       flash[:error] = @title.errors.full_messages
     end
 
-    redirect_to root_path
+    redirect_to category_path(@title.category_id)
   end
 
   private
     def title_params
-      params.require(:title).permit(:name)
+      params.require(:title).permit(:name, :category_id)
     end
 end
