@@ -14,6 +14,7 @@ gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 
+gem 'rails_admin', '~> 1.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
