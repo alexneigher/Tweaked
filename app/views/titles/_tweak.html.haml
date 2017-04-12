@@ -1,7 +1,7 @@
 %h1
   "#{tweak.name}"
 %ul.list-group
-  - tweak.descriptions.order('upvotes DESC').each do |description|
+  - tweak.descriptions.each do |description|
     %li.list-group-item
       .btn-group.btn-group
         = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
