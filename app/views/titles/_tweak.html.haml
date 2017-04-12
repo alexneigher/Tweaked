@@ -16,6 +16,7 @@
 
       %h4
         = description.text
+      \- #{description.creator}
 
   %li.list-group-item
     = form_for :description, url: title_tweak_descriptions_path(@title, tweak), remote: true, method: :post do |f|

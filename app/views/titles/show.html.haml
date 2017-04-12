@@ -7,12 +7,10 @@
 
 .row
   .col-md-12
-    .panel.panel-success
-      .panel-heading
-        Tweaks
-      .panel-body
-        %ul.list-group
-          - @title.tweaks.each do |tweak|
-            %li.list-group-item.list-group-striped{id: dom_id(tweak)}
-              = render partial: 'titles/tweak', locals: {tweak: tweak}
-            
+    %ul.list-group
+      - @title.tweaks.each do |tweak|
+        %li.list-group-item.list-group-striped{id: dom_id(tweak)}
+          = render partial: 'titles/tweak', locals: {tweak: tweak}
+      - if @title.tweaks.empty?
+        %h4 
+          Not that funny? Rearrange the letters above, and click "Submit your Tweak" to get started

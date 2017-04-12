@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411233633) do
+ActiveRecord::Schema.define(version: 20170412145844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170411233633) do
     t.integer  "downvotes",  default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "creator"
     t.index ["tweak_id"], name: "index_descriptions_on_tweak_id", using: :btree
   end
 
