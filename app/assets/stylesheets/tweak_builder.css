@@ -1,7 +1,6 @@
 #draggable-tweak-characters{
   margin-bottom: 20px;
-  display: inline-block;
-  float: left;
+  clear: both;
 }
 
 #draggable-tweak-characters .tweak-character{
@@ -29,16 +28,16 @@
   opacity: 0.7;
 }
 
-.add-new-character{
-  width:50px;
+.remove-characters-container{
+  margin-top: 30px;
+}
+.remove-character{
   border: 1px dashed #696969;
-  font-size: 40px;
+  font-size: 20px;
   line-height: 30px;
-  padding: 10px 0 15px 0;
+  padding: 20px 0;
   text-align: center;
-  float: left;
-  margin:5px;
-  cursor: pointer;
+  margin:15px 5px;
   border-radius: 8px;
-  background-color: #ece9e9;
+  background-color: #fff0f0;
 }

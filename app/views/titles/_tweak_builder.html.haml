@@ -5,27 +5,32 @@
       #draggable-tweak-characters
         - @title.name.chars.each do |char|
           .tweak-character
-            = char.titleize.gsub(' ', '__')
+            = char.titleize.gsub(' ', '&nbsp').html_safe
             = hidden_field_tag "characters[]", char.titleize
 
-      .add-new-character{data: {toggle: "collapse", target:"#alphabet-container"}}
-        +
-  .row.form-group
-    .col-md-12
-      = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
+  .row.remove-characters-container
+    .col-md-6
+      .remove-character
+        %i.fa.fa-trash
+        Drag letters here to remove them
 
+    .col-md-6{style: 'margin-top: 60px;'}
+      = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
+      %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
+        Add Letters
 
 #alphabet-container.collapse
   .well
     .row
       .col-md-12
-        - Alphabet::LETTERS.each do |char|
-          .tweak-character.clickable
-            = char
-            = hidden_field_tag "characters[]", char.gsub('__', ' ')
-
+        %h4
+          Click a letter or space to add to your tweaq!
+        %hr
     .row
       .col-md-12
-        %hr
-        %h4
-          Click a letter or "__" (space) to add to your word
+        - Alphabet::LETTERS.each do |char|
+          .tweak-character.clickable
+            = char.html_safe
+            = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
+
+    
