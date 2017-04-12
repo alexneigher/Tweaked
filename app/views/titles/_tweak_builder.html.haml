@@ -2,18 +2,30 @@
   
   .row  
     .col-md-12
-      #tweak-characters
+      #draggable-tweak-characters
         - @title.name.chars.each do |char|
           .tweak-character
             = char.titleize.gsub(' ', '__')
             = hidden_field_tag "characters[]", char.titleize
 
-  .row
+      .add-new-character{data: {toggle: "collapse", target:"#alphabet-container"}}
+        +
+  .row.form-group
     .col-md-12
       = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
 
-:javascript
-  $( function() {
-    $( "#tweak-characters" ).sortable();
-    $( "#tweak-characters" ).disableSelection();
-  } );
+
+#alphabet-container.collapse
+  .well
+    .row
+      .col-md-12
+        - Alphabet::LETTERS.each do |char|
+          .tweak-character.clickable
+            = char
+            = hidden_field_tag "characters[]", char.titleize
+
+    .row
+      .col-md-12
+        %hr
+        %h4
+          Click a letter or "__" (space) to add to your word

@@ -1,0 +1,42 @@
+#draggable-tweak-characters{
+  margin-bottom: 20px;
+}
+
+#draggable-tweak-characters .tweak-character{
+  cursor: move;
+}
+
+.tweak-character{
+  width: 50px;
+  text-align:center;
+  background-color: #f17735;
+  color: #000;
+  float: left;
+  margin: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px #696969;
+  font-size: 40px;
+}
+
+.tweak-character.clickable{
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.tweak-character.clickable:hover{
+  opacity: 0.7;
+}
+
+.add-new-character{
+  width:50px;
+  border: 1px dashed #696969;
+  font-size: 40px;
+  line-height: 30px;
+  padding: 10px 0 15px 0;
+  text-align: center;
+  float: left;
+  margin:5px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #ece9e9;
+}
