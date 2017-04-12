@@ -5,8 +5,6 @@ class DescriptionsController < ApplicationController
     @tweak = @title.tweaks.find(params[:tweak_id])
 
     @description = @tweak.descriptions.create(description_params)
-
-    redirect_to title_path(@title)
   end
 
   def upvote
