@@ -15,6 +15,6 @@
         = form_for :title, url: titles_path, method: :post do |f|
           .form-group
             = f.hidden_field :category_id, value: @category.id
-            = f.text_field :name, class: 'form-control', placeholder: 'Game of Thrones'
-          
+            = f.text_field :name, class: 'form-control', placeholder: 'e.g., Game of Thrones'
+
           = f.submit 'Save Title', class: 'btn btn-success btn-sm'

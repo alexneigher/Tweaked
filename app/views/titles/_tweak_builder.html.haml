@@ -1,6 +1,15 @@
 = form_tag title_tweaks_path(@title), method: :post do
-  - @title.name.chars.each do |char|
-    .tweak-character.well
-      = text_field_tag "characters[]", char.titleize
+  #tweak-characters
+    - @title.name.chars.each do |char|
+      .tweak-character
+        = char.titleize.gsub(' ', '__')
+        = hidden_field_tag "characters[]", char
 
+  .clearfix
   = submit_tag
+
+:javascript
+  $( function() {
+    $( "#tweak-characters" ).sortable();
+    $( "#tweak-characters" ).disableSelection();
+  } );
