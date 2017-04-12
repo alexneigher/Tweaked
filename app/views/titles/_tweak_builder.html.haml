@@ -22,7 +22,7 @@
         - Alphabet::LETTERS.each do |char|
           .tweak-character.clickable
             = char
-            = hidden_field_tag "characters[]", char.titleize
+            = hidden_field_tag "characters[]", char.gsub('__', ' ')
 
     .row
       .col-md-12

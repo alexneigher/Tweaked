@@ -34,7 +34,7 @@ class DescriptionsController < ApplicationController
     end
 
     def description_params
-      params.require(:description).permit(:text)
+      params.require(:description).permit(:text, :creator)
     end
 
 end

@@ -22,6 +22,11 @@
     = form_for :description, url: title_tweak_descriptions_path(@title, tweak), remote: true, method: :post do |f|
       .row
         .col-md-4
-          = f.text_field :text, value: nil, placeholder: "Describe '#{tweak.name}'", class: 'form-control'
+          = f.text_area :text, value: nil, placeholder: "Describe '#{tweak.name}'", rows: 3, class: 'form-control'
+          %br
+          %br
+      .row
         .col-md-4
+          = f.text_field :creator, value: nil, placeholder: 'Your name', class: 'form-control'
+        .col-md-8
           = f.submit 'Save', class: 'btn btn-sm btn-primary'
