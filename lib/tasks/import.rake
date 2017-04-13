@@ -7,11 +7,11 @@ task :import_csv, [:message] => :environment do |t, args|
   csv_text = File.read(path)
   csv = CSV.parse(csv_text, :headers => true)
   csv.each do |row|
-    title = Title.create(name: row["Original Title"]&.gsub('"',''), category_id: 1)
-    tweak = Tweak.create(name: row['Tweaqs']&.gsub('"',''), title_id: title.id)
+    title = Title.create(name: row["Original Title"].try(:gsub, '"',''), category_id: 1)
+    tweak = Tweak.create(name: row['Tweaqs'].try(:gsub, '"',''), title_id: title.id)
     description = Description
                     .create(
-                      text: row['Description of New Film']&.gsub('"',''),
+                      text: row['Description of New Film'].try(:gsub, '"',''),
                       creator: row['Creator'],
                       tweak_id: tweak.id
                     )
