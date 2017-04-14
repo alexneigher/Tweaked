@@ -1,0 +1,4 @@
+=link_to "< Back to #{@title.name}", title_path(@title)
+
+%div{id: dom_id(@tweak)}
+  = render partial: 'show', locals: {tweak: @tweak}

@@ -10,7 +10,9 @@
     %ul.list-group
       - @title.tweaks.each do |tweak|
         %li.list-group-item.list-group-striped{id: dom_id(tweak)}
-          = render partial: 'titles/tweak', locals: {tweak: tweak}
+          %h1 
+            = link_to "\"#{tweak.name}\"", title_tweak_path(tweak)
+
       - if @title.tweaks.empty?
         %h4 
           Not that funny? Rearrange the letters above, and click "Submit your Tweak" to get started

@@ -4,9 +4,13 @@ class TweaksController < ApplicationController
     @title = Title.find(params[:title_id])
     @tweak = @title.tweaks.create(name: tweak_name)
 
-    redirect_to title_path(@title)
+    render :show
   end
 
+  def show
+    @title = Title.find(params[:title_id])
+    @tweak = @title.tweaks.includes(:descriptions).find(params[:id])
+  end
 
   private
     def tweak_name
