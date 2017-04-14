@@ -8,11 +8,12 @@
 .row
   .col-md-12
     %ul.list-group
-      - @title.tweaks.each do |tweak|
+      - @title.tweaks.order(:created_at).each do |tweak|
         %li.list-group-item.list-group-striped{id: dom_id(tweak)}
           %h1 
             = link_to "\"#{tweak.name}\"", title_tweak_path(tweak)
-
+          %small
+            = "#{time_ago_in_words(tweak.created_at)} ago"
       - if @title.tweaks.empty?
         %h4 
           Not that funny? Rearrange the letters above, and click "Submit your Tweak" to get started
