@@ -17,6 +17,10 @@
   border-radius: 8px;
   box-shadow: 0px 0px 5px #696969;
   font-size: 40px;
+  -webkit-transition: font 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
 }
 
 .tweak-character.clickable{
@@ -31,6 +35,12 @@
 .remove-characters-container{
   margin-top: 30px;
 }
+.remove-characters-container .tweak-character{
+  box-shadow: none;
+  opacity: 0.3;
+  font-size: 20px;
+}
+
 .remove-character{
   border: 1px dashed #696969;
   font-size: 20px;
@@ -40,4 +50,12 @@
   margin:15px 5px;
   border-radius: 8px;
   background-color: #fff0f0;
+}
+
+.remove-character.active{
+  border: 3px dashed #696969;
+}
+
+.remove-character.hovered{
+  background-color: #a5eca5;
 }
