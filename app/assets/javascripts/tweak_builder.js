@@ -2,7 +2,7 @@ $(function(){
 
   $( "#draggable-tweak-characters" ).sortable();
 
-
+  //drop in the delete area
   $("#remove-character").droppable({
     activeClass: 'active',
     hoverClass:'hovered',

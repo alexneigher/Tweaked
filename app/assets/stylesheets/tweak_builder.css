@@ -17,10 +17,6 @@
   border-radius: 8px;
   box-shadow: 0px 0px 5px #696969;
   font-size: 40px;
-  -webkit-transition: font 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
 }
 
 .tweak-character.clickable{
@@ -30,6 +26,10 @@
 
 .tweak-character.clickable:hover{
   opacity: 0.7;
+}
+
+.tweak-character.shrink{
+  font-size: 10px;
 }
 
 .remove-characters-container{

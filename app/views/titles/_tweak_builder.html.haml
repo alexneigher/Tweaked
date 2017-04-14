@@ -7,16 +7,16 @@
             = char.titleize.gsub(' ', '&nbsp').html_safe
             = hidden_field_tag "characters[]", char.titleize
 
-.row.remove-characters-container
-  .col-md-6.col-md-offset-6
-    .remove-character#remove-character
-      %i.fa.fa-trash
-      Drag letters here to remove them
-
-  .col-md-12  
-    = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
-    %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
-      Add Letters
+  .row.remove-characters-container
+    .col-xs-8.col-md-6
+      .remove-character#remove-character
+        %i.fa.fa-trash
+        Drag letters here to remove them
+  .row
+    .col-md-12  
+      = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
+      %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
+        Add Letters
 
 #alphabet-container.collapse
   .well
