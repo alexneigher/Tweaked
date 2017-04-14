@@ -1,11 +1,5 @@
 = form_tag title_tweaks_path(@title), method: :post do
-  
   .row  
-    .col-md-12
-      = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
-      %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
-        Add Letters
-
     .col-md-12
       #draggable-tweak-characters
         - @title.name.chars.each do |char|
@@ -19,6 +13,10 @@
       %i.fa.fa-trash
       Drag letters here to remove them
 
+  .col-md-12  
+    = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
+    %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
+      Add Letters
 
 #alphabet-container.collapse
   .well
