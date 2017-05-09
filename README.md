@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) Make sure you have `Postgres` installed locally
+` brew install postgresql`
 
-Things you may want to cover:
 
-* Ruby version
+2) `cd /tweaked` and make sure all of the gems are installed
+`bundle install`
 
-* System dependencies
+2.a) You might need to install ruby and or rails on your system. Follow the steps as prescribed in the error messages
 
-* Configuration
+3) Create the database -> `rake db:create`
 
-* Database creation
+4) From the root of the app run `rails server`
 
-* Database initialization
+5) visit localhost:3000 in a browser
 
-* How to run the test suite
+6) ???
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+7) Profit
