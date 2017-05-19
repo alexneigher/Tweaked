@@ -18,3 +18,5 @@
           %strike= tweak.title.name
           = link_to tweak.name, title_tweak_path(tweak.title, tweak)
       
+      - if @recent_tweaks.empty?
+        None? You're funnier than that!
