@@ -6,3 +6,15 @@
           %h4.card-title= category.name
           %p Description about #{category.name}
           = link_to "Let's play #{category.name}", category_path(category), class: 'btn btn-primary'
+
+.row
+  .col-md-12
+    %h2
+      Recent Tweaks
+  .col-md-12
+    %ul.list-group
+      - @recent_tweaks.each do |tweak|
+        %li.list-group-item
+          %strike= tweak.title.name
+          = link_to tweak.name, title_tweak_path(tweak.title, tweak)
+      
