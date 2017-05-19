@@ -4,7 +4,9 @@ class DescriptionsController < ApplicationController
   def create
     @tweak = @title.tweaks.find(params[:tweak_id])
 
-    @description = @tweak.descriptions.create(description_params)
+    @description = @tweak.descriptions.create(description_params.merge(user: current_user))
+   
+    @descriptions = @tweak.descriptions.includes(:user).order(downvotes: :asc, upvotes: :desc)
   end
 
   def upvote
@@ -12,6 +14,7 @@ class DescriptionsController < ApplicationController
     @description = @tweak.descriptions.find(params[:description_id])
     
     @description.upvote!
+    @descriptions = @tweak.descriptions.includes(:user).order(downvotes: :asc, upvotes: :desc)
 
     render :vote
   end
@@ -20,6 +23,8 @@ class DescriptionsController < ApplicationController
     @tweak = @title.tweaks.find(params[:tweak_id])
     @description = @tweak.descriptions.find(params[:description_id])
     
+    @descriptions = @tweak.descriptions.includes(:user).order(downvotes: :asc, upvotes: :desc)
+
     @description.downvote!
 
     render :vote
@@ -34,7 +39,7 @@ class DescriptionsController < ApplicationController
     end
 
     def description_params
-      params.require(:description).permit(:text, :creator)
+      params.require(:description).permit(:text)
     end
 
 end

@@ -1,6 +1,6 @@
 class Description < ApplicationRecord
   belongs_to :tweak
-  
+  belongs_to :user
   validates_presence_of :text
 
 

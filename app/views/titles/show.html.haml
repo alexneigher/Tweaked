@@ -13,7 +13,8 @@
           %h1 
             = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
           %small
-            = "#{time_ago_in_words(tweak.created_at)} ago"
+
+            = "#{time_ago_in_words(tweak.created_at)} ago by #{tweak.user.username}"
       - if @title.tweaks.empty?
         %h4 
           Not that funny? Rearrange the letters above, and click "Submit your Tweak" to get started

@@ -1,11 +1,11 @@
 class TitlesController < ApplicationController
 
   def show
-    @title = Title.includes(tweaks: :descriptions).find(params[:id])
+    @title = Title.eager_load(tweaks: [descriptions: :user]).find(params[:id])
   end
 
   def create
-    @title = Title.create(title_params)
+    @title = current_user.titles.create(title_params)
 
     unless @title.valid?
       flash[:error] = @title.errors.full_messages
@@ -16,6 +16,6 @@ class TitlesController < ApplicationController
 
   private
     def title_params
-      params.require(:title).permit(:name, :category_id)
+      params.require(:title).permit(:name, :category_id, :user_id)
     end
 end
