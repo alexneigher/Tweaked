@@ -1,11 +1,10 @@
 .row
   - @categories.each do |category|
-    .col-md-4
+    .col-md-2
       .panel.panel-default
         .panel-body
-          %h4.card-title= category.name
-          %p Description about #{category.name}
-          = link_to "Let's play #{category.name}", category_path(category), class: 'btn btn-primary'
+          %h4.card-title.text-center= category.name
+          = link_to "LetterLoose!", category_path(category), class: 'btn btn-primary btn-block'
 
 .row
   .col-md-12
@@ -17,6 +16,6 @@
         %li.list-group-item
           %strike= tweak.title.name
           = link_to tweak.name, title_tweak_path(tweak.title, tweak)
-      
+
       - if @recent_tweaks.empty?
         None? You're funnier than that!
