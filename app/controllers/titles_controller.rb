@@ -1,7 +1,8 @@
 class TitlesController < ApplicationController
 
   def show
-    @title = Title.eager_load(tweaks: [descriptions: :user]).find(params[:id])
+    @title = Title.includes(:tweaks).find(params[:id])
+    @tweaks= @title.tweaks.includes(:descriptions, :user).order(:created_at)
   end
 
   def create
