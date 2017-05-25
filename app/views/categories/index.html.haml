@@ -1,12 +1,10 @@
 .row
   .col-md-12
-    %h2 Play By Category
-  - @categories.each do |category|
-    .col-md-3
-      .panel.panel-default
-        .panel-body
-          %h4.card-title.text-center= category.name
-          = link_to "LetterLoose!", category_path(category), class: 'btn btn-primary btn-block'
+    %h2
+      Search All Titles
+    .panel.panel-default
+      .panel-body
+        = render partial: 'titles/search'
 .row
   .col-md-12
     %h2
@@ -32,8 +30,10 @@
 
 .row
   .col-md-12
-    %h2
-      Search All Titles
-    .panel.panel-default
-      .panel-body
-        = render partial: 'titles/search'
+    %h2 Play By Category
+  - @categories.each do |category|
+    .col-md-3
+      .panel.panel-default
+        .panel-body
+          %h4.card-title.text-center= category.name
+          = link_to "LetterLoose!", category_path(category), class: 'btn btn-primary btn-block'
