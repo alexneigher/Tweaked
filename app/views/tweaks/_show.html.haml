@@ -1,12 +1,12 @@
 %h1
-  = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
+  "#{tweak.name}"
 
 %ul.list-group
   - @descriptions.each do |description|
     %li.list-group-item
       .btn-group.btn-group
         = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
-          %button.btn.btn-success.btn-sm{:type => "button"} 
+          %button.btn.btn-success.btn-sm{:type => "button"}
             = description.upvotes
             %i.fa.fa-thumbs-up
 

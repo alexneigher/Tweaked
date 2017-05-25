@@ -3,7 +3,8 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
+
     %title= content_for?(:title) ? yield(:title) : "LetterLoose"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
@@ -13,33 +14,40 @@
     %nav.navbar.navbar-inverse
       .container-fluid
         .navbar-header
-          = link_to 'LetterLoose', root_path, class: 'navbar-brand' 
-        %ul.nav.navbar-nav
-          - Category.all.each do |category|
-            %li
-              = link_to category.name, category_path(category)
-        %ul.nav.navbar-nav.navbar-right
-          - if user_signed_in?
-            %li.dropdown
-              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                %span.glyphicon.glyphicon-user
-                = current_user.username
-                %span.caret
-              %ul.dropdown-menu
-                %li
-                  %a{:href => "#"} My Tweaks
-                %li.divider{:role => "separator"}
-                %li
-                  = link_to 'Logout', destroy_user_session_path, method: :delete
-          - else
-            %li
-              = link_to new_registration_path(resource_name) do
-                %span.glyphicon.glyphicon-user
-                Sign Up
-            %li
-              = link_to new_session_path(resource_name) do
-                %span.glyphicon.glyphicon-log-in
-                Login
+          = link_to root_path, class: 'navbar-brand' do
+            = image_tag 'title.png', style: 'max-width: 350px;'
+        %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+
+        #myNavbar.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - Category.all.each do |category|
+              %li
+                = link_to category.name, category_path(category)
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  %span.glyphicon.glyphicon-user
+                  = current_user.username
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} My Tweaks
+                  %li.divider{:role => "separator"}
+                  %li
+                    = link_to 'Logout', destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to new_registration_path(resource_name) do
+                  %span.glyphicon.glyphicon-user
+                  Sign Up
+              %li
+                = link_to new_session_path(resource_name) do
+                  %span.glyphicon.glyphicon-log-in
+                  Login
     .container
       .row
         .col-lg-12

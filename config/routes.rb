@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  
+
   resources :categories, only: :show
+
+  resource :search, only: :new
 
   resources :titles do
     resources :tweaks do

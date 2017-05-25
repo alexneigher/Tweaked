@@ -1,8 +1,12 @@
 class CategoriesController < ApplicationController
-  
+
   def index
     @categories = Category.all
-    @recent_tweaks = Tweak.includes(:title).order(created_at: :desc).limit(10)
+
+    @recent_tweaks = Tweak
+                      .includes(:title, :descriptions, :user)
+                      .order(created_at: :desc)
+                      .limit(9)
   end
 
   def show
