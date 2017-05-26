@@ -10,7 +10,7 @@
     %ul.list-group
       - @tweaks.each do |tweak|
         %li.list-group-item.list-group-striped{id: dom_id(tweak)}
-          %h1
+          %h5
             = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
           %small
 

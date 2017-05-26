@@ -11,6 +11,7 @@
           .tweak-character.not-draggable.deleteable
             = char.titleize.gsub(' ', '&nbsp').html_safe
             = hidden_field_tag "characters[]", char.titleize
+
   .row
     .col-md-12
       %div.btn.btn-default.pull-right.add-letter-btn{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
