@@ -9,7 +9,8 @@
 }
 
 #sortable .added, #addable-characters .tweak-character{
-  background-color: #f17735 ;
+  background-color: #2881b5;
+  color: #fff;
 }
 
 #sortable .deleteable, #addable-characters .tweak-character{
