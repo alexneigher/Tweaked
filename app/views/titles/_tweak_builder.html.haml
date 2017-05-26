@@ -1,35 +1,47 @@
 = form_tag title_tweaks_path(@title), method: :post do
   .row  
     .col-md-12
-      #draggable-tweak-characters
+      %strong How to play:
+      %ol
+        %li Click a letter to remove it
+        %li Or, click "Add Letters" to add a new letter to the title
+    .col-md-12
+      #sortable
         - @title.name.chars.each do |char|
-          .tweak-character
+          .tweak-character.not-draggable.deleteable
             = char.titleize.gsub(' ', '&nbsp').html_safe
             = hidden_field_tag "characters[]", char.titleize
-
-  .row.remove-characters-container
-    .col-xs-8.col-md-6
-      .remove-character#remove-character
-        %i.fa.fa-trash
-        Drag letters here to remove them
   .row
-    .col-md-12  
-      = submit_tag 'Submit Your Tweak', class: 'btn btn-primary pull-right'
-      %div.btn.btn-default.pull-right{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
+    .col-md-12
+      %div.btn.btn-default.pull-right.add-letter-btn{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
         Add Letters
+
+      = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do
+        Reset Title
+
+  .row
+    .col-md-6
+      = text_area_tag 'description', nil, placeholder: 'Add a description to your new title!', rows: 5, class: 'form-group form-control description-area hidden'
+  .row
+    .col-md-12
+      = submit_tag 'Submit Your New Title', class: 'btn btn-primary btn-lg submit-button hidden'
+
 
 #alphabet-container.collapse
   .well
     .row
       .col-md-12
-        %h4
-          Click a letter or space to add to your tweaq!
+        %strong How to add a letter:
+        %ol
+          %li Click a letter to add it to the original title
+          %li Once added, drag your new letter into place
         %hr
     .row
       .col-md-12
-        - Alphabet::LETTERS.each do |char|
-          .tweak-character.clickable
-            = char.html_safe
-            = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
+        #addable-characters
+          - Alphabet::LETTERS.each do |char|
+            .tweak-character.addable
+              = char.html_safe
+              = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
 
     
