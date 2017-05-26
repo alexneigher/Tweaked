@@ -14,15 +14,14 @@
     .col-md-4
       .panel.panel-default
         .panel-body
-          = link_to title_path(tweak.title) do
-            %strike= tweak.title.name
-          %h4
-            = link_to tweak.name, title_tweak_path(tweak.title, tweak)
+          %h4{margin: '0px'}
+            = link_to title_path(tweak.title) do
+              %strike= tweak.title.name
+        
+          %div= link_to tweak.name, title_tweak_path(tweak.title, tweak)
           %small.small.text-muted
-            .pull-right.text-right
-              = "#{time_ago_in_words(tweak.created_at)} ago "
-              %br
-              = "- #{tweak.user.username}"
+            = "#{time_ago_in_words(tweak.created_at)} ago - #{tweak.user.username} "
+
 
   - if @recent_tweaks.empty?
     None? You're funnier than that!
