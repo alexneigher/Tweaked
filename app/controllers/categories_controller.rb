@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
     @recent_tweaks = Tweak
                       .includes(:title, :descriptions, :user)
                       .order(created_at: :desc)
-                      .limit(9)
+                      .limit(3)
   end
 
   def show

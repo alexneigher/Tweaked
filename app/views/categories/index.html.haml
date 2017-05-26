@@ -16,7 +16,7 @@
         .panel-body
           %strike= tweak.title.name
           %h4
-            = link_to tweak.name, title_tweak_path(tweak.title, tweak)
+            = link_to tweak.name, title_path(tweak.title)
           %small.small.text-muted
             .pull-left
               = pluralize(tweak.descriptions.length, 'description')
