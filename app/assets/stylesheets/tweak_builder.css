@@ -3,10 +3,14 @@
   clear: both;
 }
 
+#draggable-tweak-characters .tweak-character{
+  cursor: move;
+}
+
 .tweak-character{
   width: 50px;
   text-align:center;
-  background-color: #feba13;
+  background-color: #f17735;
   color: #000;
   float: left;
   margin: 5px;
@@ -15,9 +19,43 @@
   font-size: 40px;
 }
 
-.tweak-character.clickable:hover{
+.tweak-character.clickable{
   cursor: pointer;
   box-shadow: none;
-  transition: all 0.2s;
+}
+
+.tweak-character.clickable:hover{
   opacity: 0.7;
+}
+
+.tweak-character.shrink{
+  font-size: 10px;
+}
+
+.remove-characters-container{
+  margin-top: 30px;
+}
+.remove-characters-container .tweak-character{
+  box-shadow: none;
+  opacity: 0.3;
+  font-size: 20px;
+}
+
+.remove-character{
+  border: 1px dashed #696969;
+  font-size: 20px;
+  line-height: 30px;
+  padding: 20px 0;
+  text-align: center;
+  margin:15px 5px;
+  border-radius: 8px;
+  background-color: #fff0f0;
+}
+
+.remove-character.active{
+  border: 3px dashed #696969;
+}
+
+.remove-character.hovered{
+  background-color: #a5eca5;
 }
