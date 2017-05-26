@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
 
     @recent_tweaks = Tweak
-                      .includes(:title, :descriptions, :user)
+                      .includes(:title, :user)
                       .order(created_at: :desc)
                       .limit(3)
   end

@@ -14,12 +14,11 @@
     .col-md-4
       .panel.panel-default
         .panel-body
-          %strike= tweak.title.name
+          = link_to title_path(tweak.title) do
+            %strike= tweak.title.name
           %h4
-            = link_to tweak.name, title_path(tweak.title)
+            = link_to tweak.name, title_tweak_path(tweak.title, tweak)
           %small.small.text-muted
-            .pull-left
-              = pluralize(tweak.descriptions.length, 'description')
             .pull-right.text-right
               = "#{time_ago_in_words(tweak.created_at)} ago "
               %br
