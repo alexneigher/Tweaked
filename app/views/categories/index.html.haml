@@ -1,10 +1,13 @@
 .row
   .col-md-12
-    %h2
-      Search All Titles
     .panel.panel-default
       .panel-body
         = render partial: 'titles/search'
+        %hr
+        %h4 Play By Category
+        - Category.all.each do |category|
+          .category-link
+            = link_to category.name, category_path(category)
 .row
   .col-md-12
     %h2

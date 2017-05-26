@@ -12,3 +12,22 @@
 .list-group-striped:nth-child(odd){
   background-color: #f5f5f5;
 }
+
+.category-link{
+  width: 20%;
+  float: left;
+  text-align: center
+}
+
+.category-link a{
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+.category-link a:hover{
+  color: #fff;
+  text-decoration: none;
+  background-color: #feba13;
+  border-radius: 5px;
+}
