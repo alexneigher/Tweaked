@@ -3,14 +3,13 @@
     .panel.panel-default
       .panel-body
         = render partial: 'titles/search'
-        %hr
-        %h4 Play By Category
+        %br
         - @categories.each do |category|
           .category-link
             = link_to category.name, category_path(category)
 .row
   .col-md-12
-    %h2
+    %h5
       Recent Tweaks
 
   - @recent_tweaks.each do |tweak|

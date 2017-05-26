@@ -20,14 +20,19 @@
 }
 
 .category-link a{
-  width: 100%;
+  width: 95%;
+  margin: auto;
   display: block;
+  color: #fff;
+
   padding: 10px;
+  background-color: #feba13;
+  border-radius: 5px;
 }
 
 .category-link a:hover{
   color: #fff;
   text-decoration: none;
-  background-color: #feba13;
+  background-color: #2881b5;
   border-radius: 5px;
 }
