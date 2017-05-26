@@ -16,10 +16,10 @@
     .col-md-4
       .panel.panel-default
         .panel-body
-          %strike.small.text-muted= tweak.title.name
+          %strike.text-muted= tweak.title.name
           %h5{margin: '0px'}
             %div= link_to tweak.name, title_tweak_path(tweak.title, tweak)
-          %p= "\"#{tweak.descriptions.first.text}\""
+          %p.small= "\"#{tweak.descriptions.first.text}\""
           %small.small.text-muted
             = "#{time_ago_in_words(tweak.created_at)} ago - #{tweak.user.username} "
 
