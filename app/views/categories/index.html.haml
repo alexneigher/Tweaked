@@ -2,8 +2,10 @@
   .col-md-12
     %a{style: 'font-size:25px;', "aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
       How To Play
+      %i.fa.fa-sort-desc
   .col-md-12
     #collapseExample.collapse
+      %br
       %p
         %strong LETTERLOOSE IS A GAME FOR PEOPLE WHO LIKE WORDS, WIT, AND LAUGHTER.
         %br
@@ -29,12 +31,12 @@
   .col-md-12
     .panel.panel-default
       .panel-body
-        %h4.form-group Click on a category
+        %h4.form-group Play by clicking on a category
         - @categories.each do |category|
           .category-link
             = link_to category.name, category_path(category)
       .panel-body
-        %h4 Search for a title
+        %h4 Play by searching for a title
         = render partial: 'titles/search'
 
 .row

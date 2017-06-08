@@ -4,7 +4,7 @@
       %strong How to play:
       %ol
         %li Click a letter to remove it
-        %li Or, click "Add Letters" to add a new letter to the title
+        %li Or, click "Add Letter" to add a new letter to the title
     .col-md-12
       #sortable
         - @title.name.chars.each do |char|
@@ -15,7 +15,7 @@
   .row
     .col-md-12
       %div.btn.btn-default.pull-right.add-letter-btn{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
-        Add Letters
+        Add Letter
 
       = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do
         Reset Title
