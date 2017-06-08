@@ -39,11 +39,13 @@
     .col-md-4
       .panel.panel-default
         .panel-body
-          %p
-            
-            = "\"#{description.text}\""
+          %div
             = description.upvotes
             %i.fa.fa-thumbs-up
+            %small.small.text-muted
+            = "(#{description.user.username})"
+            %br
+            = "\"#{description.text}\""
           %h5{margin: '0px'}
             %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
           %small.small.text-muted
