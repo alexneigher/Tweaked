@@ -43,24 +43,14 @@
   .col-md-12
     %h4
       Highest Rated Synopses
+      = link_to "view all", descriptions_path
 .row.row-flex.row-flex-wrap
   - @recent_descriptions.each do |description|
     .col-md-4
       .panel.panel-default
-        .panel-body
-          %div
-            = description.upvotes
-            %i.fa.fa-thumbs-up
-            %small.small.text-muted
-            = "(#{description.user.username})"
-            %br
-            = "\"#{description.text}\""
-          %h5{margin: '0px'}
-            %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
-          %small.small.text-muted
-            = description.tweak.title.name
-          =# "#{time_ago_in_words(tweak.created_at)} ago - #{tweak.user.username} "
-
+        .panel-body{id: dom_id(description)}
+          = render partial: 'shared/description', locals: {description: description}
+        
 
   - if @recent_descriptions.empty?
     None? You're funnier than that!
