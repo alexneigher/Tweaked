@@ -1,39 +1,46 @@
 .row
   .col-md-12
-    %p
-      %strong LETTERLOOSE IS A GAME FOR PEOPLE WHO LIKE WORDS, WIT, AND LAUGHTER.
-      %br
-      The premise of the game is that you alter a film, book, or song title, or a common phrase, by adding or subtracting 
-      %strong ONE 
-      letter. Now you've created a new title or phrase simply by changing one letter.
-    %p
-      The challenge is to construct a clever definition for what you've just created.
-      %br
-      %br
-      %strong For example:
-      %ol
-        %li Big Lebowski.
-        %li Delete the 'g'.
-        %li Bi Lebowski.
-      %strong New definition:
-      Polish immigrant struggles with his sexuality
-  .col-md-4.col-md-offset-4.form-group
-    = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
-      Give it a try
+    %a{style: 'font-size:25px;', "aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
+      How To Play
+  .col-md-12
+    #collapseExample.collapse
+      %p
+        %strong LETTERLOOSE IS A GAME FOR PEOPLE WHO LIKE WORDS, WIT, AND LAUGHTER.
+        %br
+        The premise of the game is that you alter a film, book, or song title, or a common phrase, by adding or subtracting 
+        %strong ONE 
+        letter. Now you've created a new title or phrase simply by changing one letter.
+      %p
+        The challenge is to construct a clever synopsis for what you've just created.
+        %br
+        %br
+        %strong For example:
+        %ol
+          %li Big Lebowski.
+          %li Delete the 'g'.
+          %li Bi Lebowski.
+        %strong New synopsis:
+        Polish immigrant struggles with his sexuality
+    .col-md-4.col-md-offset-4.form-group
+      = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
+        Play LetterLoose
 
 .row
   .col-md-12
     .panel.panel-default
       .panel-body
-        = render partial: 'titles/search'
-        %br
+        %h4.form-group Click on a category
         - @categories.each do |category|
           .category-link
             = link_to category.name, category_path(category)
+      .panel-body
+        %h4 Search for a title
+        = render partial: 'titles/search'
+
 .row
   .col-md-12
     %h4
-      Highest Rated Definitions
+      Highest Rated Synopses
 .row.row-flex.row-flex-wrap
   - @recent_descriptions.each do |description|
     .col-md-4
