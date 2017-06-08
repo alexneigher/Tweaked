@@ -1,21 +1,25 @@
 .row
   .col-md-12
     %p
-      %strong LetterLoose is a game for people who like words and laughing.  
-      The premise of the game is that you alter a film, book or song title, or a common phrase,  by adding or subtracting 
+      %strong LETTERLOOSE IS A GAME FOR PEOPLE WHO LIKE WORDS, WIT, AND LAUGHTER.
+      %br
+      The premise of the game is that you alter a film, book, or song title, or a common phrase, by adding or subtracting 
       %strong ONE 
-      letter. You've thus created a new title with one adulterated word.  
+      letter. Now you've created a new title or phrase simply by changing one letter.
     %p
-      %u The game is to make up a new clever definition for the title you've just created. 
+      The challenge is to construct a clever definition for what you've just created.
       %br
       %br
       %strong For example:
       %ol
-        %li Big Lebowski.  
-        %li Delete the 'g'.  
-        %li Bi Lebowski. 
-      %strong New definition: 
+        %li Big Lebowski.
+        %li Delete the 'g'.
+        %li Bi Lebowski.
+      %strong New definition:
       Polish immigrant struggles with his sexuality
+  .col-md-4.col-md-offset-4.form-group
+    = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
+      Give it a try
 
 .row
   .col-md-12
@@ -29,19 +33,23 @@
 .row
   .col-md-12
     %h4
-      Recent Tweaks
+      Highest Rated Definitions
 .row.row-flex.row-flex-wrap
-  - @recent_tweaks.each do |tweak|
+  - @recent_descriptions.each do |description|
     .col-md-4
       .panel.panel-default
         .panel-body
-          %strike.text-muted= tweak.title.name
+          %p
+            
+            = "\"#{description.text}\""
+            = description.upvotes
+            %i.fa.fa-thumbs-up
           %h5{margin: '0px'}
-            %div= link_to tweak.name, title_tweak_path(tweak.title, tweak)
-          %p.small= "\"#{tweak.descriptions.first.text}\""
+            %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
           %small.small.text-muted
-            = "#{time_ago_in_words(tweak.created_at)} ago - #{tweak.user.username} "
+            = description.tweak.title.name
+          =# "#{time_ago_in_words(tweak.created_at)} ago - #{tweak.user.username} "
 
 
-  - if @recent_tweaks.empty?
+  - if @recent_descriptions.empty?
     None? You're funnier than that!

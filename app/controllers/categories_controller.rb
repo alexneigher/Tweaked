@@ -3,9 +3,9 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
-    @recent_tweaks = Tweak
-                      .includes(:title, :descriptions, :user)
-                      .order(created_at: :desc)
+    @recent_descriptions = Description
+                      .includes(:user, tweak: :title)
+                      .order(upvotes: :desc)
                       .limit(9)
   end
 

@@ -9,9 +9,4 @@ class Description < ApplicationRecord
     self.save
   end
 
-  def downvote!
-    self.downvotes += 1
-    self.save
-  end
-  
 end

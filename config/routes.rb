@@ -7,13 +7,14 @@ Rails.application.routes.draw do
 
   resources :categories, only: :show
 
+  get :play_random, to: "titles#random"
+
   resource :search, only: :new
 
   resources :titles do
     resources :tweaks do
       resources :descriptions do
         put :upvote
-        put :downvote
       end
     end
   end

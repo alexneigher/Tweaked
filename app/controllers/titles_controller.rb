@@ -2,7 +2,7 @@ class TitlesController < ApplicationController
 
   def show
     @title = Title.includes(:tweaks).find(params[:id])
-    @tweaks= @title.tweaks.includes(:descriptions, :user).order(:created_at)
+    @tweaks = @title.tweaks.includes(:descriptions, :user).order(:created_at)
   end
 
   def create
@@ -13,6 +13,11 @@ class TitlesController < ApplicationController
     end
 
     redirect_to category_path(@title.category_id)
+  end
+
+  def random
+    @title = Title.order("RANDOM()").first
+    redirect_to title_path(@title)
   end
 
   private

@@ -10,11 +10,6 @@
             = description.upvotes
             %i.fa.fa-thumbs-up
 
-        =link_to title_tweak_description_downvote_path(@title, tweak, description), remote: true, method: :put do
-          %button.btn.btn-danger.btn-sm{:type => "button"}
-            = description.downvotes
-            %i.fa.fa-thumbs-down
-
       %h4
         = description.text
       \- #{description.user.username}
