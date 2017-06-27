@@ -9,12 +9,13 @@ class TweaksController < ApplicationController
       redirect_to title_path(@title) and return
     end
 
-    @tweak = @title.tweaks.create(name: tweak_name, user: current_user)
-    
-    if @tweak.valid?
-      @tweak.descriptions.create(text: params[:description], user: current_user)
+    @tweak = @title.tweaks.find_or_create_by(name: tweak_name) do |t|
+      # if you got in here, this is a new tweak
+      t.update(user: current_user)
     end
-    
+
+    @tweak.descriptions.create(text: params[:description], user: current_user)
+
     @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc)
 
     render :show
