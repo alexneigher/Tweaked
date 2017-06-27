@@ -10,8 +10,11 @@ class TweaksController < ApplicationController
     end
 
     @tweak = @title.tweaks.create(name: tweak_name, user: current_user)
-    @tweak.descriptions.create(text: params[:description], user: current_user)
-
+    
+    if @tweak.valid?
+      @tweak.descriptions.create(text: params[:description], user: current_user)
+    end
+    
     @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc)
 
     render :show
