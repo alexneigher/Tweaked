@@ -1,24 +1,19 @@
 = form_tag title_tweaks_path(@title), method: :post do
-  .row  
+  .row
     .col-md-12
       %strong How to play:
       %ol
-        %li Click a letter to remove it
-        %li Or, click "Add Letter" to add a new letter to the title
+        %li Click on a letter to get started
     .col-md-12
-      #sortable
+      #items1
         - @title.name.chars.each do |char|
-          .tweak-character.not-draggable.deleteable
-            = char.titleize.gsub(' ', '&nbsp').html_safe
+          .tweak-character.original-character
+            %span.character= char.titleize.gsub(' ', '&nbsp').html_safe
             = hidden_field_tag "characters[]", char.titleize
 
   .row
-    .col-md-12
-      %div.btn.btn-default.pull-right.add-letter-btn{data: {toggle: "collapse", target:"#alphabet-container"}, style: 'margin-right :5px;'}
-        Add Letter
-
-      = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do
-        Reset Title
+    = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do
+      Reset Title
 
   .row
     .col-md-6
@@ -28,21 +23,23 @@
       = submit_tag 'Submit Your New Title', class: 'btn btn-primary btn-lg submit-button hidden'
 
 
-#alphabet-container.collapse
+#alphabet-container.hidden
   .well
     .row
       .col-md-12
-        %strong How to add a letter:
+        %strong How to change a letter:
         %ol
-          %li Click a letter to add it to the original title
-          %li Once added, drag your new letter into place
+          %li Click a letter from below to replace the existing letter
+          %li To delete, click press "delete"
         %hr
     .row
       .col-md-12
         #addable-characters
-          - Alphabet::LETTERS.each do |char|
-            .tweak-character.addable
-              = char.html_safe
-              = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
+          #items2
+            - Alphabet::LETTERS.each do |char|
+              .tweak-character
+                = char.html_safe
+                = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
 
-    
+          .delete-button
+            DELETE

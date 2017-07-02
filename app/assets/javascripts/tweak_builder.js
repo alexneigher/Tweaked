@@ -1,49 +1,46 @@
 $(function(){
 
-  //click on a letter to delete, this removes the "add letter container", shows the reset button
-  $('#sortable .deleteable').click(function(){
-    $(this).remove();
 
-    //cannot delete any more letter
-    $('.deleteable').unbind('click').removeClass('deleteable');
-
-    //remove add letters button and show reset
-    $('.add-letter-btn').remove();
-    $('.reset-btn').removeClass('hidden');
-
-    //focus on description area
-    $('.description-area').removeClass('hidden').focus();
-
-    // show submit
-    $('.submit-button').removeClass('hidden');
+  $("#items1,#items2").sortable({
+    connectWith: "#items1, #items2",
+    update: function( ) {
+      completeActionShowSubmit();
+    }
   });
 
-  //click to add, this unbinds the ability to delete a letter
-  $('#addable-characters .tweak-character').click(function(){
-    $newchar = $(this).addClass('added').unbind('click');
-    $('#sortable').append( $newchar  );
-
-    //disable delete functionality
-    $('.deleteable').unbind('click').removeClass('deleteable');
-
-    //remove all other add letters
-    $('#alphabet-container').remove();
-
-    //remove add letters button and show reset
-    $('.add-letter-btn').remove();
-    $('.reset-btn').removeClass('hidden');
-
-    //focus on description area
-    $('.description-area').removeClass('hidden').focus();
-
-    // show submit
-    $('.submit-button').removeClass('hidden');
+  $('.tweak-character.original-character').click(function(){
+    $('.tweak-character').removeClass('focus');
+    $('#alphabet-container').removeClass('hidden');
+    $(this).addClass('focus');
   });
 
 
-  $( "#sortable" ).sortable({
-    cancel: ".not-draggable"
-  });
+  $('.tweak-character.addable').click(function(){
+    var newCharacter = $(this).html();
+    var $focusedCharacter = $('.tweak-character.focus');
+    $focusedCharacter.children('input').val(newCharacter);
+    $focusedCharacter.children('.character').html(newCharacter);
+    $focusedCharacter.removeClass('focus');
+    completeActionShowSubmit();
 
-  $( "#sortable .tweak-character" ).disableSelection();
+  })
+
+  $('.delete-button').click(function(){
+    $('.tweak-character.focus').remove();
+    completeActionShowSubmit();
+  });
 })
+
+
+
+
+
+
+function completeActionShowSubmit() {
+  $('#alphabet-container').remove();
+  $('.tweak-character').removeClass('focus');
+  $('.reset-btn').removeClass('hidden');
+  $('.description-area').removeClass('hidden').focus();
+  $('.submit-button').removeClass('hidden');
+  $('.tweak-character').unbind('click');
+}
