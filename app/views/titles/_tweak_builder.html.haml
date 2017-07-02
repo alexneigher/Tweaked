@@ -37,7 +37,7 @@
         #addable-characters
           #items2
             - Alphabet::LETTERS.each do |char|
-              .tweak-character
+              .tweak-character.addable
                 = char.html_safe
                 = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
 
