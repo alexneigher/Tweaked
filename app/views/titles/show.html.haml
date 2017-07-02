@@ -1,3 +1,4 @@
+= link_to "< Back to #{@title.category.name}", category_path(@title.category)
 %h4
   =@title.name
 
@@ -18,3 +19,6 @@
       - if @title.tweaks.empty?
         %h4
           Not that funny? Rearrange the letters above, and click "Submit your Tweak" to get started
+
+
+= javascript_include_tag 'tweak_builder'
