@@ -1,6 +1,6 @@
 //Sound Files
 var addSound = new Audio("../sounds/add_letter.mp3");
-var deleteSound = new Audio("../sounds/add_delete.mp3")
+var deleteSound = new Audio("../sounds/delete_letter.mp3")
 
 $(function(){
   $("#items1,#items2").sortable({
@@ -28,6 +28,14 @@ $(function(){
     $focusedCharacter.children('input').val(newCharacter);
     $focusedCharacter.children('.character').html(newCharacter);
     $focusedCharacter.removeClass('focus');
+    completeActionShowSubmit();
+
+  })
+
+  //press red delete button
+  $('.delete-button').click(function(){
+    $('.tweak-character.focus').remove();
+    deleteSound.play();
     completeActionShowSubmit();
 
   })
