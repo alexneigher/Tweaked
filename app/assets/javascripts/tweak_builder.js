@@ -23,7 +23,7 @@ $(function(){
   //add a letter
   $('.tweak-character.addable').click(function(){
     addSound.play();
-    var newCharacter = $(this).html();
+    var newCharacter = $(this).children('input').val();
     var $focusedCharacter = $('.tweak-character.focus');
     $focusedCharacter.children('input').val(newCharacter);
     $focusedCharacter.children('.character').html(newCharacter);
