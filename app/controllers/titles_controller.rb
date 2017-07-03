@@ -1,5 +1,7 @@
 class TitlesController < ApplicationController
 
+  before_action :authenticate_user!, only: :create
+
   def show
     @title = Title.includes(:tweaks).find(params[:id])
     @tweaks = @title.tweaks.includes(:descriptions, :user).order(:created_at)
@@ -21,6 +23,7 @@ class TitlesController < ApplicationController
   end
 
   private
+
     def title_params
       params.require(:title).permit(:name, :category_id, :user_id)
     end

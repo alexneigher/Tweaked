@@ -1,5 +1,7 @@
 class TweaksController < ApplicationController
 
+  before_action :authenticate_user!, only: :create
+
   def create
 
     @title = Title.find(params[:title_id])

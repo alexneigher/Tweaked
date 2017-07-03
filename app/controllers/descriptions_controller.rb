@@ -1,11 +1,12 @@
 class DescriptionsController < ApplicationController
   before_action :find_title, except: :index
+  before_action :authenticate_user!, only: [:upvote, :create]
 
   def create
     @tweak = @title.tweaks.find(params[:tweak_id])
 
     @description = @tweak.descriptions.create(description_params.merge(user: current_user))
-   
+
     @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc)
   end
 
@@ -17,7 +18,7 @@ class DescriptionsController < ApplicationController
     @source = params[:source]
     @tweak = @title.tweaks.find(params[:tweak_id])
     @description = @tweak.descriptions.find(params[:description_id])
-    
+
     @description.upvote!
     @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc)
 
@@ -25,6 +26,11 @@ class DescriptionsController < ApplicationController
   end
 
   private
+    def authenticate_user!
+      unless user_signed_in?
+        render :error and return
+      end
+    end
 
     def find_title
       @title = Title.includes(tweaks: :descriptions).find(params[:title_id])
