@@ -1,6 +1,6 @@
 //Sound Files
 var addSound = new Audio("../sounds/add_letter.mp3");
-var deleteSound = new Audio("../sounds/delete_letter.mp3")
+var deleteSound = new Audio("../sounds/delete_sound.mp3")
 
 $(function(){
   $("#items1,#items2").sortable({
