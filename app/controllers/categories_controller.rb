@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
     @recent_descriptions = Description
                       .includes(:user, tweak: :title)
                       .order(upvotes: :desc)
+                      .where("created_at > ? ", 2.days.ago)
                       .limit(9)
   end
 
