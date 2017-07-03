@@ -20,6 +20,7 @@ class TweaksController < ApplicationController
 
     @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc)
 
+    @create = true
     render :show
   end
 
