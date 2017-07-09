@@ -37,8 +37,6 @@
         %h4 Play by searching for a title
         = render partial: 'titles/search'
 
-
-
 .row
   .col-md-4
     %h4.text-center
@@ -49,6 +47,7 @@
           %div{class: dom_id(description)}
             = render partial: 'shared/description', locals: {description: description}
           %hr
+
 
   .col-md-4
     %h4.text-center THIS WEEK'S HIGHEST RATED
@@ -67,3 +66,12 @@
           %div{class: dom_id(description)}
             = render partial: 'shared/description', locals: {description: description}
           %hr
+
+.row
+  .col-md-12
+    = link_to "SEE ALL DESCRIPTIONS", descriptions_path, class: 'btn btn-primary btn-block'
+
+%br
+%br
+
+%br
