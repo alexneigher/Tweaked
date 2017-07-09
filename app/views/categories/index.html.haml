@@ -43,7 +43,7 @@
   .col-md-4
     %h4.text-center
       HIGHEST RATED OF ALL TIME
-    .panel.panel-default
+    .panel.panel-default.highest-rated-container
       .panel-body
         - @highest_rated_descriptions_all_time.each do |description|
           %div{class: dom_id(description)}
@@ -52,7 +52,7 @@
 
   .col-md-4
     %h4.text-center THIS WEEK'S HIGHEST RATED
-    .panel.panel-default
+    .panel.panel-default.weeks-highest-rated
       .panel-body
         - @current_weeks_highest_rated_descriptions.each do |description|
           %div{class: dom_id(description)}
