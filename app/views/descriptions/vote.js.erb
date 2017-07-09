@@ -1,10 +1,10 @@
 <%- if @source == 'index' %>
   // this is the descriptions index page
-  $("#<%= dom_id(@description) %>").html("<%= j(render partial: 'shared/description', locals: {description: @description}) %>")
+  $(".<%= dom_id(@description) %>").html("<%= j(render partial: 'shared/description', locals: {description: @description}) %>")
 
 <% else %>
   // this is the tweak show page
-  $("#<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
+  $(".<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
 
 <% end %>
 

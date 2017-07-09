@@ -11,7 +11,7 @@
         %br
         The premise of the game is that you alter a film, book, or song title, or a common phrase, by adding, subtracting, or changing
         %strong ONE
-        letter.  Now you've created a new title or phrase. The challenge is to construct a clever synopsis for what you've just created.
+        letter.  Now you've created a new title or phrase. The challenge is to construct a clever descriptions for what you've just created.
 
       %p
         %strong For example:
@@ -19,7 +19,7 @@
           %li Big Lebowski.
           %li Delete the 'g'.
           %li Bi Lebowski.
-        %strong New synopsis:
+        %strong New description:
         Polish immigrant struggles with his sexuality
     .col-md-4.col-md-offset-4.form-group
       = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
@@ -37,18 +37,33 @@
         %h4 Play by searching for a title
         = render partial: 'titles/search'
 
+
+
 .row
-  .col-md-12
-    %h4
-      Highest Rated Synopses
-      = link_to "view all", descriptions_path
-.row.row-flex.row-flex-wrap
-  - @recent_descriptions.each do |description|
-    .col-md-4
-      .panel.panel-default
-        .panel-body{id: dom_id(description)}
-          = render partial: 'shared/description', locals: {description: description}
+  .col-md-4
+    %h4.text-center
+      HIGHEST RATED OF ALL TIME
+    .panel.panel-default
+      .panel-body
+        - @highest_rated_descriptions_all_time.each do |description|
+          %div{class: dom_id(description)}
+            = render partial: 'shared/description', locals: {description: description}
+          %hr
 
+  .col-md-4
+    %h4.text-center THIS WEEK'S HIGHEST RATED
+    .panel.panel-default
+      .panel-body
+        - @current_weeks_highest_rated_descriptions.each do |description|
+          %div{class: dom_id(description)}
+            = render partial: 'shared/description', locals: {description: description}
+          %hr
 
-  - if @recent_descriptions.empty?
-    None? You're funnier than that!
+  .col-md-4
+    %h4.text-center MOST RECENT
+    .panel.panel-default
+      .panel-body
+        - @most_recent_descriptions.each do |description|
+          %div{class: dom_id(description)}
+            = render partial: 'shared/description', locals: {description: description}
+          %hr

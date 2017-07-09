@@ -3,7 +3,7 @@
     .col-md-12
       %strong How to play:
       %ol
-        %li Click on a letter to get started
+        %li Click on any letter to get started
     .col-md-12
       #items1
         - @title.name.chars.each do |char|
@@ -41,6 +41,12 @@
               .tweak-character.addable
                 = char.html_safe
                 = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
+            %br
+            - Alphabet::NUMBERS.each do |char|
+              .tweak-character.addable
+                = char.html_safe
+                = hidden_field_tag "characters[]", char
+
 
           .delete-button
             DELETE
