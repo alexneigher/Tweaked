@@ -4,7 +4,7 @@
 
 <% else %>
   // this is the tweak show page
-  $(".<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
+  $("#<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
 
 <% end %>
 
