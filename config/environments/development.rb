@@ -29,6 +29,14 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # for image delivery
+  config.action_controller.asset_host = 'http://localhost:3000'
+  config.action_mailer.asset_host = config.action_controller.asset_host
+
+  # don't send emails to the wild, open a popup
+  config.action_mailer.delivery_method = :letter_opener
+
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

@@ -1,0 +1,37 @@
+%div{style: 'max-width:680px;margin:auto; border: 1px solid #696969;padding: 10px 20px;'}
+  = image_tag 'title.png', style: 'margin: auto;display: block;'
+
+  %p
+    GREETINGS!
+
+    IT'S TIME TO KICK BACK AND MAKE A WIT-STOP!
+
+    HERE'S A CHUCKLE FOR YOU, FRESH OUT OF OUR LETTERLOOSE "CLEVEREST-TWEAK-OF-THE-DAY" FILE.
+
+  .panel
+    .panel-body
+      %div
+        %p
+          %h4
+            = @title
+
+        %h5{margin: '0px'}
+          %div= @tweak
+
+        = "\"#{@description}\""
+
+
+        = @upvote_count
+
+        %br
+        %small.small.text-muted
+          = @author
+
+  %p
+
+    FEELING BETTER?  NOW, GO BACK AND... LETTERLOOSE!
+
+    SEE YOU TOMORROW,
+
+    The Gang at LetterLoose
+
