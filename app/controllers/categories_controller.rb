@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @titles = @category.titles.order(name: :asc)
+    @titles = @category.titles.order(name: :asc).page(params[:page]).per(50)
   end
 
   private

@@ -1,4 +1,4 @@
-# run this like rake import_titles_csv['uploads/titles2.csv']
+# run this like rake import_titles_csv['uploads/titles.csv']
 task :import_titles_csv, [:message] => :environment do |t, args|
   require 'csv'
 

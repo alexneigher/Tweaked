@@ -16,6 +16,8 @@ gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 
+gem 'kaminari'
+
 gem 'jquery-ui-rails'
 
 gem 'rails_admin', '~> 1.1.1'
