@@ -2,5 +2,5 @@
   - @descriptions.each do |description|
     .col-md-4
       .panel.panel-default
-        .panel-body{id: dom_id(description)}
+        .panel-body{class: dom_id(description)}
           = render partial: 'shared/description', locals: {description: description}
