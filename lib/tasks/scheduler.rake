@@ -7,12 +7,14 @@ task :send_wit_stop => :environment do
                   .order(upvotes: :desc)
                   .limit(1)
                   .first
-                  
+
   if description.present?
     emails = User.pluck(:email)
 
-    title = description.title.name
     tweak = description.tweak.name
+
+    title = description.tweak.title.name
+    
     upvotes = description.upvotes
 
     emails.each do |email|
