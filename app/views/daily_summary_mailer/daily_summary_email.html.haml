@@ -2,10 +2,11 @@
   = image_tag 'title.png', style: 'margin: auto;display: block;'
 
   %p
-    GREETINGS!
-
-    IT'S TIME TO KICK BACK AND MAKE A WIT-STOP!
-
+    %strong GREETINGS!
+  %p
+    IT'S TIME TO KICK BACK AND MAKE A
+    %strong WIT-STOP!
+  %p
     HERE'S A CHUCKLE FOR YOU, FRESH OUT OF OUR LETTERLOOSE "CLEVEREST-TWEAK-OF-THE-DAY" FILE.
 
   .panel
@@ -20,18 +21,16 @@
 
         = "\"#{@description}\""
 
-
         = @upvote_count
 
         %br
         %small.small.text-muted
           = @author
 
+  %p FEELING BETTER?  NOW, GO BACK AND... LETTERLOOSE!
   %p
-
-    FEELING BETTER?  NOW, GO BACK AND... LETTERLOOSE!
-
-    SEE YOU TOMORROW,
-
+    
+    See you tomorrow,
+    %br
     The Gang at LetterLoose
 
