@@ -10,5 +10,5 @@ class DailySummaryMailer < ApplicationMailer
     mail(to: user.email, subject: "LETTERLOOSE Daily Wit-Stop: #{Date.current.strftime('%b %d, %Y')}")
   end
 
-  #DailySummaryMailer.daily_summary_email(User.last, "Tally Ho", "Tally Hoe", "Keeping track", "Rick", 10).deliver_now
+  #DailySummaryMailer.daily_summary_email(User.where(email: 'aneigher@gmail.com').last, "Tally Ho", "Tally Hoe", "Keeping track", "Rick", 10).deliver_now
 end
