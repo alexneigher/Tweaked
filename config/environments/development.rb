@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # for image delivery
   config.action_controller.asset_host = 'http://localhost:3000'
@@ -35,7 +35,6 @@ Rails.application.configure do
 
   # don't send emails to the wild, open a popup
   config.action_mailer.delivery_method = :letter_opener
-
 
   config.action_mailer.perform_caching = false
 
