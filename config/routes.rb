@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :descriptions, only: :index
+
+  resources :users do
+    resources :descriptions, only: :index, controller: 'users/descriptions'
+  end
 end
