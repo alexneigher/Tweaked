@@ -31,7 +31,7 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => "#"} My Tweaks
+                    = link_to "My Tweaks", user_descriptions_path(current_user)
                   %li.divider{:role => "separator"}
                   %li
                     = link_to 'Logout', destroy_user_session_path, method: :delete

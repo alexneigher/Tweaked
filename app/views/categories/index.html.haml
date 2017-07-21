@@ -23,7 +23,7 @@
         Polish immigrant struggles with his sexuality
     .col-md-4.col-md-offset-4.form-group
       = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
-        Sample LetterLoose
+        Random Play
 
 .row
   .col-md-12
@@ -38,6 +38,9 @@
         = render partial: 'titles/search'
 
 .row
+  .col-xs-12
+    = image_tag "vote_now.png", style: 'max-width: 400px;margin:auto;display:block;'
+.row
   .col-md-4
     %h4.text-center
       HIGHEST RATED OF ALL TIME
@@ -47,7 +50,6 @@
           %div{class: dom_id(description)}
             = render partial: 'shared/description', locals: {description: description}
           %hr
-
 
   .col-md-4
     %h4.text-center THIS WEEK'S HIGHEST RATED
