@@ -1,8 +1,7 @@
 class SearchesController < ApplicationController
 
-
   def new
-    @titles = Title.where('name ilike ? ', "#{params[:query]}%")
+    @titles = Title.includes(:category).where('name ilike ? ', "#{params[:query]}%")
   end
 
 end
