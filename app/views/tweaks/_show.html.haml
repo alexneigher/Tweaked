@@ -9,9 +9,14 @@
           %button.btn.btn-success.btn-sm{:type => "button"}
             = description.upvotes
             %i.fa.fa-thumbs-up
-
-      %h4
+      %h4{id: dom_id(description)}
         = description.text
+
+        -if description.user == current_user
+          = link_to edit_title_tweak_description_path(@title, @tweak, description), remote: true do
+            %i.fa.fa-pencil
+
+
       \- #{description.user.username}
 
   %li.list-group-item
