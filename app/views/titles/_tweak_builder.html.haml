@@ -6,10 +6,18 @@
         %li Click on any letter to get started
     .col-md-12
       #items1
-        - @title.name.chars.each do |char|
-          .tweak-character.original-character
-            %span.character= char.titleize.gsub(' ', '&nbsp').html_safe
-            = hidden_field_tag "characters[]", char.titleize
+        - @title.name.chars.split(' ').each do |word_letters|
+          .word
+            - word_letters.each do |char|
+              .tweak-character.original-character
+                %span.character= char.titleize.gsub(' ', '&nbsp').html_safe
+                = hidden_field_tag "characters[]", char.titleize
+            .tweak-character.original-character
+              %span.character
+                &nbsp;
+              = hidden_field_tag "characters[]", ' '
+
+
 
   .row
     = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do

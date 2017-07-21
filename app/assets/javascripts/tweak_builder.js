@@ -3,9 +3,8 @@ var addSound = new Audio("../sounds/add_letter.mp3");
 var deleteSound = new Audio("../sounds/remove_letter.mp3")
 
 $(function(){
-  $("#items1,#items2").sortable({
-    cancel: '.original-character',
-    connectWith: "#items1, #items2",
+  $(".word, #items2").sortable({
+    connectWith: ".word, #items2 .tweak-character",
     update: function( ) {
       addSound.play();
       completeActionShowSubmit();

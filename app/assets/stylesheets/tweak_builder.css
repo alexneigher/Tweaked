@@ -24,6 +24,10 @@
   cursor: move;
 }
 
+
+.word {
+  display: inline-block;
+}
 .tweak-character, .delete-button{
   width: 35px;
   text-align:center;
