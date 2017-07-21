@@ -18,18 +18,16 @@
               = hidden_field_tag "characters[]", ' '
 
 
-
   .row
-    = link_to title_path(@title), class: 'btn btn-danger pull-right reset-btn hidden', style: 'margin-right :5px;' do
-      Reset Title
-
+    %br
   .row
     .col-md-6
       = text_area_tag 'description', nil, placeholder: 'Add a description to your new title!', rows: 5, class: 'form-group form-control description-area hidden'
   .row
-    .col-md-12
+    .col-md-6
       = submit_tag 'Submit Your New Title', class: 'btn btn-primary btn-lg submit-button hidden'
-
+      = link_to title_path(@title), class: 'btn btn-danger pull-right btn-lg reset-btn hidden' do
+        Reset Title
 
 #alphabet-container.hidden
   .well
