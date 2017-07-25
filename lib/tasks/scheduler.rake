@@ -9,17 +9,10 @@ task :send_wit_stop => :environment do
                   .first
 
   if description.present?
-    emails = User.pluck(:email)
 
-    tweak = description.tweak.name
-
-    title = description.tweak.title.name
-    
-    upvotes = description.upvotes
-
-    emails.each do |email|
-      puts "sending to #{email}"
-      DailySummaryMailer.daily_summary_email(email, title, tweak, description.text, user.username, upvotes).deliver_now
+    User.all.each do |user|
+      puts "sending to #{user.email}"
+      DailySummaryMailer.daily_summary_email(user, description).deliver_now
     end
   end
 end

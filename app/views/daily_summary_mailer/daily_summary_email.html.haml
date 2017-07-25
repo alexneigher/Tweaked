@@ -1,27 +1,29 @@
-%div{style: "opacity: 0.4; background-image:url(#{image_path('email_background.png')});position:absolute; width: 100%; height: 100%; top:0; left:0;"}
+%div{style: "opacity: 0.2; background-image:url(#{image_path('email_background.png')});position:absolute; width: 100%; height: 100%; top:0; left:0;"}
 
-= image_tag 'title.png', style: 'margin: auto;display: block;position: relative'
+= link_to root_url do
+  = image_tag 'title.png', style: 'max-width:720px;width: 80%;margin: auto;display: block; position: relative'
+
 %div{style: 'max-width:720px; margin: auto;position: relative'}
-
-  %p{style: 'text-align:center; text-shadow: 0 0 5px #fff'}
-    %strong TODAY'S DAILY WIT-STOP!
+  %strong
+    %p{style: 'text-align:center; text-shadow: 0 0 5px #fff'}
+      TODAY'S DAILY WIT-STOP!
 
   .panel
     .panel-body
       %div
-        %p
-          %h2{style: 'margin:0px'}
-            = @title
+        %h2{style: 'margin:0px'}
+          = @description.tweak.title.name
 
-        %h3{style: 'margin:0px'}
-          %div= @tweak
+        = link_to title_tweak_url(@description.tweak.title, @description.tweak), target: '_blank' do
+          %h3{style: 'margin:10px 0'}
+            = @description.tweak.name
 
         %p
-          = "\"#{@description}\""
-          = @upvote_count
+          = "\"#{@description.text}\""
+          = @description.upvotes
 
         %p{style: 'color:#777; font-size: 13px;'}
-          = "#{@author} - #{time_ago_in_words(@created_at)} ago"
+          = "#{@description.user.username} - #{time_ago_in_words(@description.created_at)} ago"
 
   %p
     Lorem Ipsum unsubscribe text will go here
