@@ -34,6 +34,9 @@
                     = link_to "My Tweaks", user_descriptions_path(current_user)
                   %li.divider{:role => "separator"}
                   %li
+                    = link_to 'My Account', user_email_preferences_path(current_user)
+                  %li.divider{:role => "separator"}
+                  %li
                     = link_to 'Logout', destroy_user_session_path, method: :delete
             - else
               %li

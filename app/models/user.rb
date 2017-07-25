@@ -8,4 +8,9 @@ class User < ApplicationRecord
   has_many :titles
   has_many :tweaks
   has_many :descriptions
+  has_one :email_preferences
+
+  after_create do
+    create_email_preferences
+  end
 end

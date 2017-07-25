@@ -9,10 +9,12 @@ task :send_wit_stop => :environment do
                   .first
 
   if description.present?
+    users = User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).distinct
 
-    User.all.each do |user|
+    users.each do |user|
       puts "sending to #{user.email}"
       DailySummaryMailer.daily_summary_email(user, description).deliver_now
     end
+
   end
 end

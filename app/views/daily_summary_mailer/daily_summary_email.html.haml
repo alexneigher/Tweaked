@@ -26,4 +26,5 @@
           = "#{@description.user.username} - #{time_ago_in_words(@description.created_at)} ago"
 
   %p
-    Lorem Ipsum unsubscribe text will go here
+    To unsubscribe from the Daily Wit Stop
+    = link_to 'click here', public_email_preferences_url(@user.email_preferences, email_preferences: {wit_stop: false})
