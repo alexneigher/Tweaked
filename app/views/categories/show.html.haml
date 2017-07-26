@@ -2,10 +2,14 @@
 %br
 
 %ul.list-group
-  - @titles.each do |title|
+  - @titles.in_groups_of(3).each do |grouping|
     %li.list-group-item
-      =link_to title_path(title) do
-        = title.name
+      .row
+        - [0,1,2].each do |i|
+          - if grouping[i].present?
+            .col-md-4
+              =link_to title_path(grouping[i]) do
+                = grouping[i].name
 
 = paginate @titles
 
