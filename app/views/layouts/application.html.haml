@@ -5,7 +5,7 @@
     %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
     
-    = content_for?(:og_tags) ? yield(:og_tags)
+    = content_for?(:og_tags) ? yield(:og_tags) : ''
 
     %title= content_for?(:title) ? yield(:title) : "LetterLoose"
     = csrf_meta_tags
