@@ -40,6 +40,11 @@ class DescriptionsController < ApplicationController
     render :vote
   end
 
+  def show
+    @tweak = @title.tweaks.find(params[:tweak_id])
+    @description = @tweak.descriptions.includes(:user).find(params[:id])
+  end
+
   private
     def authenticate_user!
       unless user_signed_in?
