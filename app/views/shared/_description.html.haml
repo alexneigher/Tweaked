@@ -2,6 +2,9 @@
   %p
     %h4
       = description.tweak.title.name
+      .pull-right
+        = link_to '#', onclick: "postToFeed('#{title_tweak_description_path(description.tweak.title, description.tweak, description)}');" do
+          %i.fa.fa-facebook-official
 
   %h5{margin: '0px'}
     %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
@@ -15,6 +18,6 @@
   %br
   %small.small.text-muted
     = "#{description.user.username} - #{time_ago_in_words(description.created_at)} ago"
-  
-  = link_to 'weeee', '#', onclick: "postToFeed('#{title_tweak_description_path(description.tweak.title, description.tweak, description)}');";
+  %br
 
+  
