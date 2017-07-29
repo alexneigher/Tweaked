@@ -1,9 +1,10 @@
-%meta{:content => "LetterLoose", :property => "og:site_name"}/
-%meta{:content => "http://www.letterloose.com", :property => "og:url"}/
-%meta{:content => @description.tweak.title.name, :property => "og:title"}/
-%meta{:content => @description.text, :property => "og:description"}/
-%meta{:content => "article", :property => "og:type"}/
-%meta{:content => "http://www.letterloose.com/assets/title-928e97d3a17beda1902ed2ba259aebef3caa2dd9803b8a82ccd0cc06fabd3ace.png", :property => "og:image"}/
+- content_for(:og_tags) do
+  %meta{:content => "LetterLoose", :property => "og:site_name"}/
+  %meta{:content => "http://www.letterloose.com", :property => "og:url"}/
+  %meta{:content => @description.tweak.title.name, :property => "og:title"}/
+  %meta{:content => @description.text, :property => "og:description"}/
+  %meta{:content => "article", :property => "og:type"}/
+  %meta{:content => "http://www.letterloose.com/assets/title-928e97d3a17beda1902ed2ba259aebef3caa2dd9803b8a82ccd0cc06fabd3ace.png", :property => "og:image"}/
 
 .panel.panel-default
   .panel-body
