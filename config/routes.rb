@@ -29,4 +29,9 @@ Rails.application.routes.draw do
   namespace :public do
     get 'email_preferences/:id', to: 'email_preferences#update', as: 'email_preferences'
   end
+
+
+  get :privacy_policy, controller: 'static_pages'
+  get :terms_of_service, controller: 'static_pages'
+
 end
