@@ -23,7 +23,6 @@
   .row
     .col-md-6
       = text_area_tag 'description', nil, placeholder: 'Add a description to your new title!', rows: 5, class: 'form-group form-control description-area hidden'
-  .row
     .col-md-6
       = submit_tag 'Submit Your New Title', class: 'btn btn-primary btn-lg submit-button hidden'
       = link_to title_path(@title), class: 'btn btn-danger pull-right btn-lg reset-btn hidden' do
