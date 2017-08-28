@@ -42,7 +42,7 @@ class DescriptionsController < ApplicationController
 
   def show
     @tweak = @title.tweaks.find(params[:tweak_id])
-    @description = @tweak.descriptions.includes(:user).find(params[:id])
+    @description = @tweak.descriptions.includes(:user, tweak: :title).find(params[:id])
   end
 
   private

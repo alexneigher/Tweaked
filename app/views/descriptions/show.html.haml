@@ -1,5 +1,5 @@
 = content_for(:og_tags) do
-  %meta{:content => @description.tweak.name, :name => "og:title"}/
+  %meta{:content => "#{@description.tweak.name} (#{@description.tweak.title.name})", :name => "og:title"}/
   %meta{:content => @description.text, :name => "og:description"}/
 
 .panel.panel-default
