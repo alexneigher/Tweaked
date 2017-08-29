@@ -5,6 +5,16 @@
   =require twitter-bootstrap-static/sprites
 */
 
+.pattern-background{
+  background-image: asset_url('background_pattern.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+
+.text-white {
+  color: #fff;
+}
+
 .navbar{
   border-radius: 0;
   margin-bottom: 40px;
