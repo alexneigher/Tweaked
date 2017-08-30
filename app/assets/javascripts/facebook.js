@@ -14,7 +14,7 @@ window.fbAsyncInit = function() {
 function postToFeed(url){
   FB.ui({
     method: 'feed',
-    link: 'http://www.letterloose.com' + url + '?source=facebook',
+    link: 'http://www.letterloose.com' + url,
     href: 'http://www.letterloose.com'
   }, function(response){
     console.log(response);
