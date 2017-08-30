@@ -12,11 +12,9 @@ window.fbAsyncInit = function() {
 };
 
 function postToFeed(url){
-  console.log('http://www.letterloose.com' + url + '?source=facebook');
   FB.ui({
     method: 'feed',
-    link: 'http://www.letterloose.com' + url,
-    caption: 'An example caption',
+    link: 'http://www.letterloose.com' + url + '?source=facebook',
   }, function(response){
     console.log(response);
   });
