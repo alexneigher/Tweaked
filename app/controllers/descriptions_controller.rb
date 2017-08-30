@@ -41,6 +41,8 @@ class DescriptionsController < ApplicationController
   end
 
   def show
+    redirect_to root_path if params[:source] == 'facebook'
+    
     @tweak = @title.tweaks.find(params[:tweak_id])
     @description = @tweak.descriptions.includes(:user, tweak: :title).find(params[:id])
   end
