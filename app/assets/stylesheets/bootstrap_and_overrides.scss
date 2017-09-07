@@ -11,6 +11,25 @@
   background-repeat: no-repeat;
 }
 
+.full-height-div{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.4
+}
+
+.btn-letterloose{
+  background-color: #feba13;
+  color: black;
+}
+
+.btn-shadow{
+  box-shadow: 0 0 30px 2px #696969
+}
+
 .text-white {
   color: #fff;
 }
