@@ -32,6 +32,6 @@ Rails.application.routes.draw do
 
 
   get :privacy_policy, controller: 'static_pages'
-  get :terms_of_service, controller: 'static_pages'
+  get :terms_of_use, controller: 'static_pages'
 
 end
