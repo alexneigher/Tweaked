@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725031056) do
+ActiveRecord::Schema.define(version: 20170927024013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20170725031056) do
   create_table "descriptions", force: :cascade do |t|
     t.text     "text"
     t.integer  "tweak_id"
-    t.integer  "upvotes",    default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
+    t.integer  "likes_count", default: 0
     t.index ["tweak_id"], name: "index_descriptions_on_tweak_id", using: :btree
     t.index ["user_id"], name: "index_descriptions_on_user_id", using: :btree
   end
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170725031056) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_email_preferences_on_user_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "description_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["description_id"], name: "index_likes_on_description_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "titles", force: :cascade do |t|
@@ -81,5 +90,7 @@ ActiveRecord::Schema.define(version: 20170725031056) do
 
   add_foreign_key "descriptions", "tweaks"
   add_foreign_key "email_preferences", "users"
+  add_foreign_key "likes", "descriptions"
+  add_foreign_key "likes", "users"
   add_foreign_key "tweaks", "titles"
 end

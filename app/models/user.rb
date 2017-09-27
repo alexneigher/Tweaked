@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :titles
   has_many :tweaks
+  has_many :likes
   has_many :descriptions
   has_one :email_preferences
 

@@ -5,10 +5,15 @@
   - @descriptions.each do |description|
     %li.list-group-item
       .btn-group.btn-group
-        = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
-          %button.btn.btn-success.btn-sm{:type => "button"}
-            = description.upvotes
+        - if description.liked_by?(current_user)
+          %button.btn.btn-disabled.btn-sm{:type => "button"}
+            = description.likes_count
             %i.fa.fa-thumbs-up
+        - else
+          = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
+            %button.btn.btn-success.btn-sm{:type => "button"}
+              = description.likes_count
+              %i.fa.fa-thumbs-up
       %h4{id: dom_id(description)}
         = description.text
 

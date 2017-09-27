@@ -11,9 +11,13 @@
 
   = "\"#{description.text}\""
 
-  = link_to title_tweak_description_upvote_path(description.tweak.title, description.tweak, description, source: 'index'), remote: true, method: :put do
-    = description.upvotes
+  - if description.liked_by?(current_user)
+    = description.likes_count
     %i.fa.fa-thumbs-up
+  - else
+    = link_to title_tweak_description_upvote_path(description.tweak.title, description.tweak, description, source: 'index'), remote: true, method: :put do
+      = description.likes_count
+      %i.fa.fa-thumbs-up
 
   %br
   %small.small.text-muted

@@ -16,8 +16,8 @@ class CategoriesController < ApplicationController
   private
     def descriptions
         Description
-          .includes(:user, tweak: :title)
-          .order(upvotes: :desc)
+          .includes(:user, :likes, tweak: :title)
+          .order(likes_count: :desc)
           .limit(9)
     end
 

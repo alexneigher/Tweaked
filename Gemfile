@@ -11,6 +11,7 @@ gem 'rails', '~> 5.0.2'
 
 gem 'devise'
 
+gem 'pry-rails'
 gem 'pg'
 gem 'haml'
 gem 'twitter-bootstrap-rails'

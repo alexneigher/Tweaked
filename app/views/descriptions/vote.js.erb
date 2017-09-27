@@ -5,7 +5,6 @@
 <% else %>
   // this is the tweak show page
   $("#<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
-
 <% end %>
 
 var thumbsUp = new Audio("/sounds/thumbs_up.mp3");

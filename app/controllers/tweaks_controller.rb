@@ -18,7 +18,7 @@ class TweaksController < ApplicationController
 
     @tweak.descriptions.create(text: params[:description], user: current_user)
 
-    @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc, created_at: :desc)
+    @descriptions = @tweak.descriptions.includes(:user, :likes).order(likes_count: :desc, created_at: :desc)
 
     @create = true
     render :show
@@ -27,7 +27,7 @@ class TweaksController < ApplicationController
   def show
     @title = Title.find(params[:title_id])
     @tweak = @title.tweaks.find(params[:id])
-    @descriptions = @tweak.descriptions.includes(:user).order(upvotes: :desc, created_at: :desc)
+    @descriptions = @tweak.descriptions.includes(:user, :likes).order(likes_count: :desc, created_at: :desc)
   end
 
   private

@@ -4,7 +4,7 @@ class TitlesController < ApplicationController
 
   def show
     @title = Title.includes(:tweaks).find(params[:id])
-    @tweaks = @title.tweaks.includes(:descriptions, :user).order(:created_at)
+    @tweaks = @title.tweaks.includes(:user, descriptions: :likes).order(:created_at)
   end
 
   def create

@@ -20,7 +20,7 @@
 
           %p
             = "\"#{@description.text}\""
-            = @description.upvotes
+            = @description.likes_count
 
           %p{style: 'color:#777; font-size: 13px;'}
             = "#{@description.user.username} - #{time_ago_in_words(@description.created_at)} ago"

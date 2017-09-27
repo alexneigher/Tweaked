@@ -4,7 +4,7 @@ task :send_wit_stop => :environment do
 
   description = Description
                   .where('descriptions.created_at > ?', Date.today.beginning_of_day)
-                  .order(upvotes: :desc)
+                  .order(likes_count: :desc)
                   .limit(1)
                   .first
 
