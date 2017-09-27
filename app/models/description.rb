@@ -11,6 +11,7 @@ class Description < ApplicationRecord
   end
 
   def liked_by?(user)
+    return false unless user
     likes.pluck(:user_id).include?(user.id)
   end
 
