@@ -1,5 +1,12 @@
 RailsAdmin.config do |config|
 
+  config.authenticate_with do
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'letterloose' &&
+      password == 'nougatcenter'
+    end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==
