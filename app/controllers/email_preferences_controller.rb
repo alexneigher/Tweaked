@@ -20,6 +20,6 @@ class EmailPreferencesController < ApplicationController
 
   private
     def email_preferences_params
-      params.require(:email_preferences).permit(:wit_stop)
+      params.require(:email_preferences).permit(:wit_stop, :upvote_notifications)
     end
 end

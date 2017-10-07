@@ -8,6 +8,7 @@ class Description < ApplicationRecord
   def upvote!(current_user)
     self.likes.create(user: current_user)
     update(likes_count: self.likes_count + 1)
+    UpvoteMailer.upvoted(current_user, self).deliver_now
   end
 
   def liked_by?(user)

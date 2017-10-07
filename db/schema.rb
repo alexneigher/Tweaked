@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927024013) do
+ActiveRecord::Schema.define(version: 20171007044740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20170927024013) do
 
   create_table "email_preferences", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "wit_stop",   default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "wit_stop",             default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "upvote_notifications", default: true
     t.index ["user_id"], name: "index_email_preferences_on_user_id", using: :btree
   end
 
