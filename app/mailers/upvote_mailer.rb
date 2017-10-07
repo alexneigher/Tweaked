@@ -8,7 +8,7 @@ class UpvoteMailer < ApplicationMailer
     return nil unless @description_author.email_preferences.upvote_notifications?
 
     @upvoter = upvoter
-    mail(to: @description_author.email, subject: "#{@upvoter.username} gave you an upvote!")
+    mail(to: @description_author.email, subject: "#{@upvoter.username} gave you an upvote!").deliver
   end
 
   #UpvoteMailer.upvoted(User.where(email: 'aneigher@gmail.com').last, Description.last).deliver_now
