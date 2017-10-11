@@ -1,7 +1,12 @@
 = link_to "< Back to #{@title.category.name}", category_path(@title.category)
-%h4
-  =@title.name
-
+.row
+  .col-md-6
+    %h4
+      =@title.name
+  .col-md-6
+    = link_to play_random_path, class: 'btn btn-primary btn-lg pull-right' do
+      Random Play
+%br
 .panel.panel-default
   .panel-body
     = render partial: 'titles/tweak_builder'
