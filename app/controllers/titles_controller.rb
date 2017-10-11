@@ -8,13 +8,14 @@ class TitlesController < ApplicationController
   end
 
   def create
-    @title = current_user.titles.create(title_params)
+    @title = current_user.titles.find_or_create_by(name:title_params[:name], category_id: title_params[:category_id])
 
-    unless @title.valid?
+    if @title.valid?
+      redirect_to title_path(@title)
+    else
       flash[:error] = @title.errors.full_messages
+      redirect_to root_path
     end
-
-    redirect_to category_path(@title.category_id)
   end
 
   def random

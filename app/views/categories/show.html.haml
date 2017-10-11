@@ -1,6 +1,18 @@
 = link_to '< Back to Start', root_path
 %br
+%br
+.row
+  .col-md-6
+    = form_for :title, url: titles_path, html: {class: 'form-inline'}, method: :post do |f|
+      .form-group
+        = f.hidden_field :category_id, value: @category.id
+        %label Add your own:
+        = f.text_field :name, class: 'form-control', placeholder: 'e.g., Game of Thrones'
 
+      = f.submit 'Save', class: 'btn btn-success btn-sm'
+
+
+%br
 %ul.list-group
   - @titles.in_groups_of(3).each do |grouping|
     %li.list-group-item
@@ -13,15 +25,3 @@
 
 = paginate @titles
 
-.row
-  .col-md-6
-    .panel.panel-default
-      .panel-heading
-        Add your Own
-      .panel-body
-        = form_for :title, url: titles_path, method: :post do |f|
-          .form-group
-            = f.hidden_field :category_id, value: @category.id
-            = f.text_field :name, class: 'form-control', placeholder: 'e.g., Game of Thrones'
-
-          = f.submit 'Save Title', class: 'btn btn-success btn-sm'
