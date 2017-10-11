@@ -9,5 +9,9 @@
         = hidden_field_tag 'email_preferences[wit_stop]', false
         = f.check_box :wit_stop
       %li.list-group-item
+        Upvote Notifications
+        = hidden_field_tag 'email_preferences[upvote_notifications]', false
+        = f.check_box :upvote_notifications
 
+      %li.list-group-item
         = f.submit 'Update', class: 'btn btn-success btn-sm'
