@@ -1,3 +1,8 @@
+.row
+  .col-md-12
+    %h2
+      All work by
+      %span.text-letter-loose= @user.username
 .row.row-flex.row-flex-wrap
   - @descriptions.each do |description|
     .col-md-4

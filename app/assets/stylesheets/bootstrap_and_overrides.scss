@@ -7,7 +7,7 @@
 
 .pattern-background{
   background-image: asset_url('background_pattern.jpg');
-  background-size: cover; 
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -79,4 +79,8 @@
 .footer{
   padding: 20px 0;
   background-color: #eeeeee
+}
+
+.text-letter-loose{
+  color: #feba13;
 }

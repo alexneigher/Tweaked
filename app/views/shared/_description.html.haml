@@ -21,7 +21,8 @@
 
   %br
   %small.small.text-muted
-    = "#{description.user.username} - #{time_ago_in_words(description.created_at)} ago"
+    = link_to description.user.username, user_descriptions_path(description.user)
+    = "- #{time_ago_in_words(description.created_at)} ago"
   %br
 
-  
+

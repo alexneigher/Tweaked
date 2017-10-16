@@ -21,10 +21,14 @@ Rails.application.routes.draw do
 
   resources :descriptions, only: :index
 
+
   resources :users do
     resources :descriptions, only: :index, controller: 'users/descriptions'
     resource :email_preferences
   end
+
+  resources :likes
+
 
   namespace :public do
     get 'email_preferences/:id', to: 'email_preferences#update', as: 'email_preferences'
