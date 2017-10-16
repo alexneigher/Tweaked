@@ -5,6 +5,19 @@
   =require twitter-bootstrap-static/sprites
 */
 
+/* override the nav dropdown link-within-link problem */
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #efefef;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+
 .pattern-background{
   background-image: asset_url('background_pattern.jpg');
   background-size: cover;

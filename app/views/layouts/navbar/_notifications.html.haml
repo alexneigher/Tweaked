@@ -9,9 +9,14 @@
 %ul.dropdown-menu
   - @likes.each do |like|
     %li
-      = link_to like_path(like, like: {acknowledged: :true}), remote: true, method: :put do
-        %span.text-letter-loose
-          = like.user.username
+      .dropdown-item
+        = link_to user_descriptions_path(like.user) do
+          %span.text-letter-loose
+            = like.user.username
         has liked your description:
-        = like.description.text
+        = link_to user_descriptions_path(current_user) do
+          = like.description.text.truncate(50)
+        = link_to like_path(like, like: {acknowledged: :true}), remote: true, method: :put do
+          %i.fa.fa-times.text-muted
+
 
