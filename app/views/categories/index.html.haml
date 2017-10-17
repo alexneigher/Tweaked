@@ -62,7 +62,7 @@
     %ul.list-group
       - @top_users.each do |user|
         %li.list-group-item
-          = link_to user_path(user[:user_id]) do
+          = link_to user_descriptions_path(user[:user_id]) do
             = user[:username]
           .pull-right
             %i.fa.fa-thumbs-up
