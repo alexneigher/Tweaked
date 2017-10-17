@@ -2,7 +2,7 @@ class TopUserService
 
 
   def initialize
-    @descriptions = Description.all#where("created_at > ?", 1.week.ago)
+    @descriptions = Description.where("created_at > ?", 1.week.ago)
   end
 
 
