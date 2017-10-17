@@ -2,7 +2,7 @@ class TopUserService
 
 
   def initialize
-    @descriptions = Description.where("created_at > ?", 1.week.ago)
+    @descriptions = Description.all#where("created_at > ?", 1.week.ago)
   end
 
 
@@ -21,8 +21,8 @@ class TopUserService
                         user_id: user_id,
                         count: descriptions.sum(&:likes_count)
                       }
-                    end.sort_by{|k,v| v[:count]}
-
+                    end.sort{|a,z|a[:count]<=>z[:count]}.reverse
+      
       #returns an array like [{username: alex, id: 1, count: 3}, {},..,..,{}]
     end
 
