@@ -4,8 +4,8 @@
     %h4
       =@title.name
   .col-md-6
-    = link_to play_random_path, class: 'btn btn-primary btn-lg pull-right' do
-      Random Play
+    = link_to play_random_path(category_id: @title.category.id), class: 'btn btn-primary btn-lg pull-right' do
+      Another #{@title.category.name.titleize.singularize}
 %br
 .panel.panel-default
   .panel-body

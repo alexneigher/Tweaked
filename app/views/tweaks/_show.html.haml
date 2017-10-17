@@ -24,11 +24,17 @@
 
       \- #{description.user.username}
 
-  %li.list-group-item
-    = form_for :description, url: title_tweak_descriptions_path(@title, tweak), remote: true, method: :post do |f|
-      .row.form-group
-        .col-md-6
-          = f.text_area :text, value: nil, placeholder: "Add your description of '#{tweak.name}'", rows: 3, class: 'form-control'
-      .row
-        .col-md-8
-          = f.submit 'Save', class: 'btn btn-primary'
+
+.form-group
+  %button.btn.btn-default{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
+    Add your own description
+
+  #collapseExample.collapse.m1t
+    .card.card-block
+      = form_for :description, url: title_tweak_descriptions_path(@title, tweak), remote: true, method: :post do |f|
+        .row.form-group
+          .col-md-6
+            = f.text_area :text, value: nil, placeholder: "Add your description of '#{tweak.name}'", rows: 3, class: 'form-control'
+        .row
+          .col-md-8
+            = f.submit 'Save', class: 'btn btn-primary'

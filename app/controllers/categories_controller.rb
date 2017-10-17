@@ -3,9 +3,11 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
-    @highest_rated_descriptions_all_time = descriptions
-    @current_weeks_highest_rated_descriptions = descriptions.where("created_at > ?", 7.days.ago)
-    @most_recent_descriptions = descriptions.reorder(created_at: :desc)
+    @highest_rated_descriptions_all_time = descriptions.limit(9)
+    @current_weeks_highest_rated_descriptions = descriptions.where("created_at > ?", 7.days.ago).limit(9)
+    @most_recent_descriptions = descriptions.reorder(created_at: :desc).limit(9)
+
+    @top_users = TopUserService.new.perform
   end
 
   def show
@@ -15,11 +17,8 @@ class CategoriesController < ApplicationController
 
   private
     def descriptions
-        Description
-          .includes(:user, :likes, tweak: :title)
-          .order(likes_count: :desc)
-          .limit(9)
+      Description
+        .includes(:user, :likes, tweak: :title)
+        .order(likes_count: :desc)
     end
-
-
 end

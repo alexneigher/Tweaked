@@ -1,52 +1,72 @@
 = render 'shared/how_to_play'
 
 .row
-  .col-md-4.col-md-offset-4.form-group
-    = link_to play_random_path, class: 'btn btn-primary btn-lg btn-block' do
+  .col-md-12
+    %h3
+      Play by clicking on a category
+
+  - @categories.each do |category|
+    .col-md-2.category-link
+      = link_to category.name, play_random_path(category_id: category.id)
+
+  .col-md-2.category-link
+    = link_to play_random_path do
       Random Play
+
 .row
   .col-md-12
-    .panel.panel-default
-      .panel-body
-        %h4.form-group  Play by clicking on a category
-        - @categories.each do |category|
-          .category-link
-            = link_to category.name, category_path(category)
-      .panel-body
-        %h4 Play by searching for a title
+    .m1t
+      %button.btn.btn-default{"aria-controls" => "searchBox", "aria-expanded" => "false", "data-target" => "#searchBox", "data-toggle" => "collapse", :type => "button"}
+        or search for a specific title
+
+      #searchBox.collapse
         = render partial: 'titles/search'
 
+%hr
 .row
   .col-xs-12
     = image_tag "vote_now.png", style: 'max-width: 400px;margin:auto;display:block;'
 .row
-  .col-md-4
-    %h4.text-center
-      HIGHEST RATED OF ALL TIME
-    .panel.panel-default.highest-rated-container
-      .panel-body
-        - @highest_rated_descriptions_all_time.each do |description|
-          %div{class: dom_id(description)}
-            = render partial: 'shared/description', locals: {description: description}
-          %hr
+  .col-md-9
+    .row
+      .col-md-4
+        %h4.text-center
+          HIGHEST RATED OF ALL TIME
+        .panel.panel-default.highest-rated-container
+          .panel-body
+            - @highest_rated_descriptions_all_time.each do |description|
+              %div{class: dom_id(description)}
+                = render partial: 'shared/description', locals: {description: description}
+              %hr
 
-  .col-md-4
-    %h4.text-center THIS WEEK'S HIGHEST RATED
-    .panel.panel-default.weeks-highest-rated
-      .panel-body
-        - @current_weeks_highest_rated_descriptions.each do |description|
-          %div{class: dom_id(description)}
-            = render partial: 'shared/description', locals: {description: description}
-          %hr
+      .col-md-4
+        %h4.text-center THIS WEEK'S HIGHEST RATED
+        .panel.panel-default.weeks-highest-rated
+          .panel-body
+            - @current_weeks_highest_rated_descriptions.each do |description|
+              %div{class: dom_id(description)}
+                = render partial: 'shared/description', locals: {description: description}
+              %hr
 
-  .col-md-4
-    %h4.text-center MOST RECENT
-    .panel.panel-default
-      .panel-body
-        - @most_recent_descriptions.each do |description|
-          %div{class: dom_id(description)}
-            = render partial: 'shared/description', locals: {description: description}
-          %hr
+      .col-md-4
+        %h4.text-center MOST RECENT
+        .panel.panel-default
+          .panel-body
+            - @most_recent_descriptions.each do |description|
+              %div{class: dom_id(description)}
+                = render partial: 'shared/description', locals: {description: description}
+              %hr
+  .col-md-3
+    %h4.text-center Top Users This Week
+    
+    %ul.list-group
+      - @top_users.each do |user|
+        %li.list-group-item
+          = link_to user_path(user[:user_id]) do
+            = user[:username]
+          .pull-right
+            %i.fa.fa-thumbs-up
+            = user[:count]
 
 .row
   .col-md-12

@@ -19,7 +19,14 @@ class TitlesController < ApplicationController
   end
 
   def random
-    @title = Title.order("RANDOM()").first
+
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @title = @category.titles.order("RANDOM()").first
+    else
+      @title = Title.order("RANDOM()").first
+    end
+  
     redirect_to title_path(@title)
   end
 
