@@ -15,12 +15,16 @@
   .col-md-12
     %ul.list-group
       - @tweaks.each do |tweak|
-        %li.list-group-item.list-group-striped{id: dom_id(tweak)}
-          %h5
-            = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
-          %small
-
-            = "#{time_ago_in_words(tweak.created_at)} ago by #{tweak.user.username}"
+        %li.list-group-item.list-group-striped.clearfix{id: dom_id(tweak)}
+          %row
+            .col-md-6
+              %h4
+                = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
+              %small.text-muted
+                = "#{time_ago_in_words(tweak.created_at)} ago by #{tweak.user.username}"
+            .col-md-6
+              = link_to title_tweak_path(@title, tweak), class: "btn btn-default pull-right" do
+                Add your own description
       - if @title.tweaks.empty?
         %h4
           Looks like nobody has played with this title before. You're the first!
