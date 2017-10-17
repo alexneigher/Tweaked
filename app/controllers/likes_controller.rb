@@ -2,8 +2,7 @@ class LikesController < ApplicationController
 
   #used to render your unacknowledged likes
   def index
-    return [] unless user_signed_in?
-    @likes = unacknowledged_likes
+    @likes = user_signed_in? ? unacknowledged_likes : []
   end
 
 
