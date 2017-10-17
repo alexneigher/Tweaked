@@ -16,12 +16,12 @@ class TopUserService
     def sum_user_hashes(user_id_hash)
 
       user_hashes = user_id_hash.map do |user_id, descriptions|
-                      { 
+                      {
                         username: users_by_id[user_id].first.username,
                         user_id: user_id,
-                        count: descriptions.sum(&:likes_count) 
+                        count: descriptions.sum(&:likes_count)
                       }
-                    end.sort_by(&:count)
+                    end.sort_by{|k,v| v[:count]}
 
       #returns an array like [{username: alex, id: 1, count: 3}, {},..,..,{}]
     end
