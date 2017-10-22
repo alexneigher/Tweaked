@@ -16,9 +16,13 @@ class TweaksController < ApplicationController
       t.update(user: current_user)
     end
 
-    @tweak.descriptions.create(text: params[:description], user: current_user)
+    @description = @tweak.descriptions.create(text: params[:description], user: current_user)
 
     @descriptions = @tweak.descriptions.includes(:user, :likes).order(likes_count: :desc, created_at: :desc)
+
+    
+    TwitterService.new(@description.id).delay.post_tweet
+
 
     @create = true
     render :show

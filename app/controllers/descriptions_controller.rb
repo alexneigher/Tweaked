@@ -8,6 +8,8 @@ class DescriptionsController < ApplicationController
     @description = @tweak.descriptions.create(description_params.merge(user: current_user))
 
     @descriptions = @tweak.descriptions.includes(:user, :likes).order(likes_count: :desc, created_at: :desc)
+
+    TwitterService.new(@description.id).delay.post_tweet
   end
 
   def edit

@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default_url_options = { :host => "http://www.letterloose.com" }
-
+  config.action_controller.default_url_options = {:host => "http://www.letterloose.com"}
   config.action_mailer.asset_host = 'http://www.letterloose.com'
 
   config.action_mailer.smtp_settings = {
