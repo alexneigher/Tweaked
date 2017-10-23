@@ -1,5 +1,4 @@
 class Title < ApplicationRecord
-
   has_many :tweaks, dependent: :destroy
   belongs_to :category
   belongs_to :user
