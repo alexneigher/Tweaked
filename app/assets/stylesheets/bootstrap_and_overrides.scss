@@ -95,16 +95,6 @@
   color: #feba13;
 }
 
-
-.list-group-striped {
-  .list-group-item:nth-child(odd){ 
-    background-color: #feba13;
-  }
-  .list-group-item:nth-child(even){ 
-    background-color: #ffd264;
-  }
-}
-
 @media (max-width: 968px){
   .category-link{
     margin: 10px 0;
