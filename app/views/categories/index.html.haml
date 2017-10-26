@@ -60,13 +60,22 @@
     %h4.text-center &#127942; TOP USERS THIS WEEK
     
     %ul.list-group
-      - @top_users.each do |user|
-        %li.list-group-item
+      - @top_users.each_with_index do |user, i|
+        %li.list-group-item{style:"background-color: rgba(228,34,46, #{1.to_f/(i+1)});"}
           = link_to user_descriptions_path(user[:user_id]) do
-            = user[:username]
-          .pull-right
-            %i.fa.fa-thumbs-up
-            = user[:count]
+            - if i == 0
+              .text-white
+                %h5
+                  = user[:username]
+                  .pull-right
+                    %i.fa.fa-thumbs-up
+                    = user[:count]
+            - else
+              = user[:username]
+              .pull-right
+                %i.fa.fa-thumbs-up
+                = user[:count]
+          
 
 .row
   .col-md-12
