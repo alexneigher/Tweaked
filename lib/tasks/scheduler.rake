@@ -19,7 +19,6 @@
 #   end
 # end
 
-
 desc "Send summary of upvotes"
 task :send_upvote_summary => :environment do
   likes_by_description_id ||= Like.where("created_at > ?", 24.hours.ago).group(:description_id).count

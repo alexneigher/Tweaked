@@ -6,6 +6,7 @@ class UpvoteMailer < ApplicationMailer
     @description_author = description.user
 
     return nil unless @description_author.email_preferences.upvote_notifications?
+    headers['X-SMTPAPI'] = '{"category": "Single Upvote"}' #for sendgrid categorization
 
     @upvoter = upvoter
     mail(to: @description_author.email, subject: "#{@upvoter.username} gave you an upvote!").deliver
@@ -18,6 +19,8 @@ class UpvoteMailer < ApplicationMailer
     @descriptions = descriptions
 
     return nil unless @user.email_preferences.upvote_notifications?
+
+    headers['X-SMTPAPI'] = '{"category": "Upvote Summary"}' #for sendgrid categorization
 
     mail(to: @user.email, subject: "You've got some upvotes!")
   end
