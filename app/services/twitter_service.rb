@@ -20,7 +20,7 @@ class TwitterService
  private
 
   def formatted_description
-    "#{@tweak.name} - #{@description.text} http://www.letterloose.com #letterloose"
+    "#{@tweak.name} - #{@description.text} http://www.letterloose.com #letterloose".truncate(140)
   end
 
   def client
