@@ -13,7 +13,7 @@
     .panel-body
       %div
         %p
-          - @descriptions.each do |d|
+          - @descriptions[0].each do |d|
             %div{style: 'padding: 10px 0'}
               ="\"<strong>#{d[:text]}\"</strong> was liked #{pluralize(d[:count], 'time')}".html_safe
 
