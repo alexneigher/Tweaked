@@ -31,6 +31,6 @@ task :send_upvote_summary => :environment do
                                 {text: d.text, count: likes_by_description_id[d.id]}
                               end
 
-    UpvoteMailer.upvote_summary(user_id, description_like_count)
+    UpvoteMailer.upvote_summary(user_id, description_like_count).deliver_now
   end
 end
