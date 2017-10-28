@@ -3,9 +3,9 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
-    @highest_rated_descriptions_all_time = descriptions.limit(18)
-    @current_weeks_highest_rated_descriptions = descriptions.where("created_at > ?", 7.days.ago).limit(18)
-    @most_recent_descriptions = descriptions.reorder(created_at: :desc).limit(18)
+    @highest_rated_descriptions_all_time = descriptions.limit(25)
+    @current_weeks_highest_rated_descriptions = descriptions.where("created_at > ?", 7.days.ago).limit(25)
+    @most_recent_descriptions = descriptions.reorder(created_at: :desc).limit(25)
 
     @top_users = TopUserService.new.perform
   end
