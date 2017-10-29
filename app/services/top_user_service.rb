@@ -21,8 +21,7 @@ class TopUserService
                         user_id: user_id,
                         count: descriptions.sum(&:likes_count)
                       }
-                    end.sort{|a,z|a[:count]<=>z[:count]}.reverse
-      
+                    end.sort{|a,z|a[:count]<=>z[:count]}.reverse.first(10)
       #returns an array like [{username: alex, id: 1, count: 3}, {},..,..,{}]
     end
 
