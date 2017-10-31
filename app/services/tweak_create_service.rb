@@ -29,7 +29,7 @@ class TweakCreateService
 
   private
     def tweak_name
-      @params[:characters].join('')
+      @params[:characters].join('').strip
     end
 
 end
