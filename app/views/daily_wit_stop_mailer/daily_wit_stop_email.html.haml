@@ -6,7 +6,7 @@
   %div{style: 'max-width:720px; margin: auto;position: relative;padding: 30px 0 80px'}
     %strong
       %p{style: 'text-align:center;color: #fff;font-size: 20px;margin-bottom:10px;'}
-        TODAY'S DAILY WIT-STOP!
+        DAILY WIT STOP!
 
     .panel
       .panel-body
@@ -25,6 +25,6 @@
           %p{style: 'color:#777; font-size: 13px;'}
             = "#{@description.user.username} - #{time_ago_in_words(@description.created_at)} ago"
 
-    %p
+    %p.text-white
       To unsubscribe from the Daily Wit Stop
       = link_to 'click here', public_email_preferences_url(@user.email_preferences, email_preferences: {wit_stop: false})
