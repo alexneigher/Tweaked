@@ -11,5 +11,9 @@
     %li
       = link_to 'My Account', user_email_preferences_path(current_user)
     %li.divider{:role => "separator"}
+    - if current_user.admin?
+      %li
+        = link_to 'Daily Wit Stop', daily_wit_stops_path
+      %li.divider{:role => "separator"}
     %li
       = link_to 'Logout', destroy_user_session_path, method: :delete

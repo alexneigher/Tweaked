@@ -1,4 +1,7 @@
 class DailyWitStopsController < ApplicationController
+  http_basic_authenticate_with name: "letterloose", password: "nougatcenter"
+  before_action :authenticate_user!
+
   before_action :fetch_descriptions, except: :create
   before_action :fetch_wit_stops, except: :create
   
