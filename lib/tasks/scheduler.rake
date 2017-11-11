@@ -2,6 +2,9 @@ desc 'Send Daily Wit Stop'
 task :send_daily_wit_stop => :environment do
 
   daily_wit_stop = DailyWitStop.scheduled.last
+
+  return unless daily_wit_stop
+  
   daily_wit_stop.update(sent: true, sent_at: DateTime.current )
 
   User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).each do |user|
