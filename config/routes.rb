@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :descriptions, only: :index
 
+  resources :daily_wit_stops
 
   resources :users do
     resources :descriptions, only: :index, controller: 'users/descriptions'

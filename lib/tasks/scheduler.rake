@@ -1,23 +1,13 @@
-# desc "Send daily wit stop email"
-# task :send_wit_stop => :environment do
-#   puts "finding description #{Date.today.beginning_of_day}"
+desc 'Send Daily Wit Stop' 
+task :send_daily_wit_stop => :environment do
 
-#   description = Description
-#                   .where('descriptions.created_at > ?', Date.today.beginning_of_day)
-#                   .order(likes_count: :desc)
-#                   .limit(1)
-#                   .first
+  daily_wit_stop = DailyWitStop.scheduled.last
+  daily_wit_stop.update(sent: true, sent_at: DateTime.current )
 
-#   if description.present?
-#     users = User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).distinct
-
-#     users.each do |user|
-#       puts "sending to #{user.email}"
-#       DailySummaryMailer.daily_summary_email(user, description).deliver_now
-#     end
-
-#   end
-# end
+  User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).each do |user|
+    DailyWitStopMailer.daily_wit_stop_email(user, daily_wit_stop).deliver_now
+  end
+end
 
 desc "Send summary of upvotes"
 task :send_upvote_summary => :environment do

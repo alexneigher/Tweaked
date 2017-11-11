@@ -2,9 +2,20 @@
   padding: 20px;
 }
 
+.m00y{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .m1t{
   margin-top: 10px;
+}
+.m2t{
+  margin-top: 20px;
+}
+
+.m3y{
+  margin: 30px 0;
 }
 
 
