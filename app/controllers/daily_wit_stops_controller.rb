@@ -2,8 +2,8 @@ class DailyWitStopsController < ApplicationController
   http_basic_authenticate_with name: "letterloose", password: "nougatcenter"
   before_action :authenticate_user!
 
-  before_action :fetch_descriptions, except: :create
-  before_action :fetch_wit_stops, except: :create
+  before_action :fetch_descriptions, except: [:create, :destroy]
+  before_action :fetch_wit_stops, except: [:create, :destroy]
   
   def index
     
@@ -22,6 +22,12 @@ class DailyWitStopsController < ApplicationController
     @preview_description = Description.includes(:user, :likes, tweak: :title).find(params[:description_id])
   end
 
+
+  def destroy
+    @daily_wit_stop = DailyWitStop.find(params[:id])
+    @daily_wit_stop.destroy
+    redirect_to daily_wit_stops_path
+  end
 
   private
     def fetch_wit_stops
