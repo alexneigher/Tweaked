@@ -31,7 +31,7 @@ class DailyWitStopsController < ApplicationController
 
   private
     def fetch_wit_stops
-      @daily_wit_stops = DailyWitStop.includes(:user, description: [:likes, tweak: :title])
+      @daily_wit_stops = DailyWitStop.includes(:user, description: [:user, :likes, tweak: :title])
     end
 
     def fetch_descriptions
