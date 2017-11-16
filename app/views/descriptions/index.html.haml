@@ -4,3 +4,5 @@
       .panel.panel-default
         .panel-body{class: dom_id(description)}
           = render partial: 'shared/description', locals: {description: description}
+
+= paginate @descriptions

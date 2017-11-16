@@ -28,7 +28,7 @@ class DescriptionsController < ApplicationController
   end
 
   def index
-    @descriptions = Description.includes(:user, tweak: :title).order(likes_count: :desc).order(created_at: :desc)
+    @descriptions = Description.includes(:user, tweak: :title).order(created_at: :desc).page(params[:page]).per(400)
   end
 
   def upvote
