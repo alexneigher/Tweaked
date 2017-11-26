@@ -18,6 +18,8 @@ function postToFeed(url){
   }, function(response){
     console.log(response);
   });
+
+  ga('send', 'event', 'social', 'share', 'Facebook');
 };
 
 // Load the SDK's source Asynchronously
